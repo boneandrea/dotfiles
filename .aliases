@@ -2,4 +2,5 @@ alias ls="\ls -FG"
 alias ll="ls -l"
 alias la="ls -a"
 alias df="\df -h"
+alias x="exit"
 
