@@ -1,4 +1,4 @@
-alias ls="\ls -FG"
+alias ls="\ls --color=auto -FG"
 alias ll="ls -l"
 alias la="ls -a"
 alias df="\df -h"
