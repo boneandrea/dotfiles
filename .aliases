@@ -1,6 +1,14 @@
-alias ls="\ls --color=auto -FG"
+alias ls="\ls -F --color=auto"
 alias ll="ls -l"
 alias la="ls -a"
-alias df="\df -h"
-alias x="exit"
+alias x=exit
+alias h="fc -fldi"
+alias df="\df -H"
 
+alias xm="xmodmap ~/.Xmodmap ;  setxkbmap -option ctrl:nocaps ; xinput --set-prop 'Buffalo Bluetooth Optical Mouse' 'Device Accel Constant Deceleration' 1.5"
+
+
+alias sqlplus='rlwrap sqlplus'
+
+alias gl="\git log --graph --oneline --all --branches --decorate"
+alias gll='\git log --graph --all --format="%x04%C(cyan bold)%Creset%x09%C(yellow)%h%Creset %C(magenta reverse)%d%Creset %s"'
