@@ -1,0 +1,10 @@
+[user]
+	email = banchou@peixe.biz
+	name = Takuya Tanaka
+[alias]
+	lga = log --graph --all --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+[push]
+	default = simple
+[core]
+	autoCRLF = false
+	safecrlf = true
