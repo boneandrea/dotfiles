@@ -3,6 +3,10 @@
 ;;; uncomment this line to disable loading of "default.el" at startup
 ;; (setq inhibit-default-init t)
 
+(require 'cask "~/.cask/cask.el")
+(cask-initialize)
+
+
 
 (require 'package)
 ;; MELPAを追加
@@ -308,8 +312,8 @@
 (fset 'ivy--regex 'identity)
 
 
-;; sql-indent
-(eval-after-load "sql"
-  '(load-library "sql-indent"))
-(sql-set-product "mysql")
-(put 'downcase-region 'disabled nil)
+;; ;; sql-indent
+;; (eval-after-load "sql"
+;;   '(load-library "sql-indent"))
+;; (sql-set-product "mysql")
+;; (put 'downcase-region 'disabled nil)
