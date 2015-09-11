@@ -214,4 +214,8 @@ export JAVA_HOME=/usr/lib/jvm/java-8-oracle
 export PATH=$JAVA_HOME/bin:$PATH
 export LD_LIBRARY_PATH=/usr/arm-linux-gnueabihf/lib
 
+# Oracle 文字化け
+
+export NLS_LANG=JAPANESE_JAPAN.AL32UTF8
+
 alias xm="xmodmap ~/.Xmodmap"
