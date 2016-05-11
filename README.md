@@ -1,4 +1,4 @@
 #Caskのinstall
-簡単
+簡単だが忘れる
 ````
 % curl -fsSkL https://raw.github.com/cask/cask/master/go | python
