@@ -60,6 +60,7 @@ export PATH
 #
 	export LANG=C
 	export LANG=ja_JP.UTF-8
+	export LESSCHARSET=UTF-8
 	export LC_TIME=C
 	export LC_MESSAGES=C
 	export EDITOR=vi
