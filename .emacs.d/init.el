@@ -6,11 +6,6 @@
 (require 'cask "~/.cask/cask.el")
 (cask-initialize)
 
-(require 'package)
-;; MELPA, Marmaladeを追加
-(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
-(add-to-list 'package-archives  '("marmalade" . "http://marmalade-repo.org/packages/"))
-
 ;; 初期化
 (package-initialize)
 (require 'use-package)
@@ -43,7 +38,7 @@
 (set-keyboard-coding-system 'utf-8)
 (set-buffer-file-coding-system 'utf-8-unix)
 
-
+(global-set-key "\C-xm" 'set-mark-command)
 ;; % でmatch
 
  (global-set-key "%" 'match-paren)
@@ -92,7 +87,9 @@
 
 
 ;; php-mode
-(use-package "php-mode")
+(use-package php-mode)
+
+(add-to-list 'auto-mode-alist '("\\.php$"     . php-mode))
 
 ;; php-mode タブ設定とか
 (setq php-mode-force-pear t)
@@ -109,8 +106,6 @@
 ;; flymake (Emacs22から標準添付されている)
 (use-package flymake)
 
-
-
 ;;; A sample file of .emacs or a site configuration file
 
 (autoload 'mew "mew" nil t)
@@ -125,6 +120,11 @@
       (append '(("\\.rb$" . ruby-mode)) auto-mode-alist))
 (setq interpreter-mode-alist (append '(("ruby" . ruby-mode))
                                      interpreter-mode-alist))
+(setq ruby-deep-indent-paren-style nil)
+(setq ruby-deep-indent-paren nil)
+
+;; no need magic comment
+(setq ruby-insert-encoding-magic-comment nil)
 
 
 ;; javascript-mode                                                                                                                                                     
@@ -132,7 +132,6 @@
 (add-to-list 'auto-mode-alist (cons  "\\.\\(qml\\|js\\|as\\|json\\|jsn\\)\\'" 'javascript-mode))
 (autoload 'javascript-mode "javascript" nil t)
 (setq js-indent-level 4)
-
 
 ;; Rubyのマニュアル検索
 (defun refe (str)
@@ -144,7 +143,12 @@
 ;; (autoload 'qml-mode "qml-mode" t)
 ;; (setq-default indent-tabs-mode t) ;; default = nil
 
-(setq-default tab-width 4)
+
+;; タブ文字ではなくスペースを使う
+(setq-default indent-tabs-mode nil)
+
+;; タブ幅をスペース2つ分にする
+(setq-default tab-width 2)
 
 ;;
 ;; whiltespace-mode
@@ -188,20 +192,26 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; web-mode.el
 
-(use-package web-mode)
+(use-package web-mode
+  :mode (("\\.phtml$"     . web-mode)
+         ("\\.ctp$"       . web-mode)
+         ("\\.tpl\\.php$" . web-mode)
+         ("\\.jsp$"       . web-mode)
+         ("\\.as[cp]x$"   . web-mode)
+         ("\\.erb$"       . web-mode)
+         ("\\.html?$"     . web-mode))
+  :config (
+           )
+  )
 
-;;; emacs 23以下の互換
-(when (< emacs-major-version 24)
-  (defalias 'prog-mode 'fundamental-mode))
-
-;;; 適用する拡張子
-(add-to-list 'auto-mode-alist '("\\.phtml$"     . web-mode))
-(add-to-list 'auto-mode-alist '("\\.ctp$"       . web-mode))
-(add-to-list 'auto-mode-alist '("\\.tpl\\.php$" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.jsp$"       . web-mode))
-(add-to-list 'auto-mode-alist '("\\.as[cp]x$"   . web-mode))
-(add-to-list 'auto-mode-alist '("\\.erb$"       . web-mode))
-(add-to-list 'auto-mode-alist '("\\.html?$"     . web-mode))
+;; ;;; 適用する拡張子
+;; (add-to-list 'auto-mode-alist '("\\.phtml$"     . web-mode))
+;; (add-to-list 'auto-mode-alist '("\\.ctp$"       . web-mode))
+;; (add-to-list 'auto-mode-alist '("\\.tpl\\.php$" . web-mode))
+;; (add-to-list 'auto-mode-alist '("\\.jsp$"       . web-mode))
+;; (add-to-list 'auto-mode-alist '("\\.as[cp]x$"   . web-mode))
+;; (add-to-list 'auto-mode-alist '("\\.erb$"       . web-mode))
+;; (add-to-list 'auto-mode-alist '("\\.html?$"     . web-mode))
 
 ;;; インデント数
 (defun web-mode-hook ()
@@ -216,3 +226,88 @@
 ;(setq web-mode-disable-auto-pairing nil)
 
 
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (markdown-mode 0xc nginx-mode clang-format coffee-mode slim-mode rjsx-mode kotlin-mode magit php-mode use-package))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+
+;; rjsx-mode タブ設定
+(add-to-list 'auto-mode-alist '("\\.js$"     . rjsx-mode))
+
+(add-hook 'rjsx-mode-hook
+          (lambda ()
+            (setq indent-tabs-mode nil) ;;インデントはタブではなくスペース
+            (setq js-indent-level 2) ;;スペースは２つ、デフォルトは4
+            (setq js2-strict-missing-semi-warning nil))) ;;行末のセミコロンの警告はオフ
+
+
+;; coffeeScript
+(autoload 'coffee-mode "coffee-mode" "Major mode for editing CoffeeScript." t)
+(add-to-list 'auto-mode-alist '("\\.coffee$" . coffee-mode))
+(add-to-list 'auto-mode-alist '("Cakefile" . coffee-mode))
+
+;; flycheck
+(add-hook 'ruby-mode-hook
+          '(lambda ()
+             (setq flycheck-checker 'ruby-rubocop)
+                          (flycheck-mode 1)))
+(define-key ctl-x-map "a" ' flycheck-next-error)
+(define-key ctl-x-map "z" ' flycheck-prev-error)
+
+(add-hook 'after-init-hook #'global-flycheck-mode)
+
+;; clang-format
+(global-set-key "\C-xcf" 'clang-format)
+
+
+(add-hook 'java-mode-common-hook
+          '(lambda ()
+                      (add-hook 'after-save-hook
+                                'clang-format-buffer)))
+
+
+(when (boundp 'indent-rigidly-map)
+  ;; 矢印ではなく f b で簡単にインデントできるようにする
+  (define-key indent-rigidly-map (kbd "f") 'indent-rigidly-right-to-tab-stop)
+  (define-key indent-rigidly-map (kbd "b") 'indent-rigidly-left-to-tab-stop)
+
+  ;; 1文字ずつインデントする方は滅多に使わないので shift 付きにする
+  (define-key indent-rigidly-map (kbd "F") 'indent-rigidly-right)
+  (define-key indent-rigidly-map (kbd "B") 'indent-rigidly-left)
+
+  ;; C-x C-i を2連続でタイプした場合は使用頻度が高い右タブインデントに割り当て
+  (define-key indent-rigidly-map (kbd "C-x TAB") 'indent-rigidly-right-to-tab-stop)
+
+  ;; vi ライクなキーバインドにしたいときは h l を使うのもいいかも
+  ;; (define-key indent-rigidly-map (kbd "l") 'indent-rigidly-right-to-tab-stop)
+  ;; (define-key indent-rigidly-map (kbd "h") 'indent-rigidly-left-to-tab-stop)
+  )
+
+
+;; markdown-mode
+(use-package web-mode
+  :mode (("\\.md$"     . markdown-mode))
+  :config (
+           )
+)
+
+;; reload updated buffers
+(defun revert-buffer-no-confirm ()
+  "Revert buffer without confirmation."
+  (interactive) (revert-buffer t t))
+(global-set-key (kbd "C-c C-r") 'revert-buffer-no-confirm)
+(global-auto-revert-mode 1)
+
+(require 'ruby-electric)
+(add-hook 'ruby-mode-hook '(lambda () (ruby-electric-mode t)))
+(setq ruby-electric-expand-delimiters-list nil)

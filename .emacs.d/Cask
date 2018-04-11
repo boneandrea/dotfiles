@@ -1,11 +1,19 @@
 (source gnu)
+(source marmalade)
 (source melpa)
-;(source marmalade)
 
+(depends-on "ansi")
 (depends-on "bind-key")
+(depends-on "blockdiag-mode")
 (depends-on "cask")
+(depends-on "clang-format")
+(depends-on "coffee-mode")
 (depends-on "dash")
 (depends-on "drag-stuff")
+(depends-on "ecukes")
+(depends-on "el-mock")
+(depends-on "ert-async")
+(depends-on "ert-runner")
 (depends-on "exec-path-from-shell")
 (depends-on "expand-region")
 (depends-on "f")
@@ -15,14 +23,28 @@
 (depends-on "idle-highlight-mode")
 (depends-on "magit")
 (depends-on "multiple-cursors")
+(depends-on "noflet")
 (depends-on "pallet")
+(depends-on "php-mode")
+
+;; 最近機械学習関連で出番が増えてるPython。
+(depends-on "python-mode")
+
+(depends-on "ruby-end")
+(depends-on "ruby-mode")
+(depends-on "s")
+(depends-on "servant")
+(depends-on "shell-split-string")
 (depends-on "smartparens")
 (depends-on "smex")
 (depends-on "use-package")
-(depends-on "web-mode")
-(depends-on "php-mode")
-(depends-on "yasnippet")
-(depends-on "yaml-mode")
-(depends-on "blockdiag-mode")
 
+;; HTML/Yaml編集。設定ファイル系統はYAMLが多いのでそれなりに使います
+(depends-on "web-mode")
+(depends-on "yaml-mode")
+
+(depends-on "yasnippet")
+
+;https://github.com/qoobaa/ruby-electric
+(depends-on "ruby-electric")
 
