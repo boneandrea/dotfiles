@@ -47,4 +47,15 @@
 
 ;https://github.com/qoobaa/ruby-electric
 (depends-on "ruby-electric")
+(depends-on "ruby-block")
+
+
+; vue
+(depends-on "vue-mode")
+(depends-on "vue-html-mode")
+(depends-on "mmm-mode")
+
+
+;; package.elでやったことがCaskに反映される（このファイル)
+(depends-on "pallet")
 
