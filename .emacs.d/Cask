@@ -5,6 +5,7 @@
 (depends-on "ansi")
 (depends-on "bind-key")
 (depends-on "blockdiag-mode")
+(depends-on "js2-mode")
 (depends-on "cask")
 (depends-on "clang-format")
 (depends-on "coffee-mode")

@@ -1,4 +1,4 @@
-;; .emacs
+;;;;; .emacs
 
 ;;; uncomment this line to disable loading of "default.el" at startup
 ;; (setq inhibit-default-init t)
@@ -108,14 +108,11 @@
 
 ;;; A sample file of .emacs or a site configuration file
 
-(autoload 'mew "mew" nil t)
-(autoload 'mew-send "mew" nil t)
-
+(use-package mew)
 
 ;; ruby-mode
 
-(autoload 'ruby-mode "ruby-mode"
-  "Mode for editing ruby source files" t)
+(use-package ruby-mode)
 (setq auto-mode-alist
       (append '(("\\.rb$" . ruby-mode)) auto-mode-alist))
 (setq interpreter-mode-alist (append '(("ruby" . ruby-mode))
@@ -129,8 +126,8 @@
 
 ;; javascript-mode                                                                                                                                                     
 
-(add-to-list 'auto-mode-alist (cons  "\\.\\(qml\\|js\\|as\\|json\\|jsn\\)\\'" 'javascript-mode))
-(autoload 'javascript-mode "javascript" nil t)
+(use-package js2-mode)
+(add-to-list 'auto-mode-alist (cons  "\\.\\(qml\\|js\\|as\\|json\\|jsn\\)\\'" 'js2-mode))
 (setq js-indent-level 4)
 
 ;; Rubyのマニュアル検索
@@ -169,7 +166,7 @@
 
 ;; blockdiag-mode
 
-(use-package "blockdiag-mode")
+(use-package blockdiag-mode)
 (setq auto-mode-alist
       (append '(("\\.diag$" . blockdiag-mode)) auto-mode-alist))
 
@@ -198,6 +195,7 @@
          ("\\.tpl\\.php$" . web-mode)
          ("\\.jsp$"       . web-mode)
          ("\\.as[cp]x$"   . web-mode)
+         ("\\.slim\\vue$"       . web-mode)
          ("\\.erb$"       . web-mode)
          ("\\.html?$"     . web-mode))
   :config (
@@ -252,9 +250,9 @@
 
 
 ;; coffeeScript
-(autoload 'coffee-mode "coffee-mode" "Major mode for editing CoffeeScript." t)
-(add-to-list 'auto-mode-alist '("\\.coffee$" . coffee-mode))
-(add-to-list 'auto-mode-alist '("Cakefile" . coffee-mode))
+;; (autoload 'coffee-mode "coffee-mode" "Major mode for editing CoffeeScript." t)
+;; (add-to-list 'auto-mode-alist '("\\.coffee$" . coffee-mode))
+;; (add-to-list 'auto-mode-alist '("Cakefile" . coffee-mode))
 
 ;; flycheck
 (add-hook 'ruby-mode-hook
@@ -308,6 +306,8 @@
 (global-set-key (kbd "C-c C-r") 'revert-buffer-no-confirm)
 (global-auto-revert-mode 1)
 
-(require 'ruby-electric)
-(add-hook 'ruby-mode-hook '(lambda () (ruby-electric-mode t)))
-(setq ruby-electric-expand-delimiters-list nil)
+;;
+;; (require 'ruby-electric)
+;; (add-hook 'ruby-mode-hook '(lambda () (ruby-electric-mode t)))
+;; (setq ruby-electric-expand-delimiters-list nil)
+(put 'downcase-region 'disabled nil)
