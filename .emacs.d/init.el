@@ -57,12 +57,12 @@
 (setq display-time-string-forms
 
 '((if display-time-day-and-date
-	  (format "%s/%s/%s " year month day)
-	"")
+    (format "%s/%s/%s " year month day)
+  "")
   (format "%s:%s%s"
-		  (if display-time-24hr-format 24-hours 12-hours)
-		  minutes
-		  (if display-time-24hr-format "" am-pm))))
+      (if display-time-24hr-format 24-hours 12-hours)
+      minutes
+      (if display-time-24hr-format "" am-pm))))
 
 (display-time)
 (setq visible-bell t)
@@ -182,7 +182,7 @@
 ;; 拡張子の*.rst, *.restのファイルをrst-modeで開く
 (setq auto-mode-alist
       (append '(("\\.rst$" . rst-mode)
-				("\\.rest$" . rst-mode)) auto-mode-alist))
+        ("\\.rest$" . rst-mode)) auto-mode-alist))
 ;; 背景が黒い場合はこうしないと見出しが見づらい
 (setq frame-background-mode 'dark)
 ;; 全部スペースでインデントしましょう
