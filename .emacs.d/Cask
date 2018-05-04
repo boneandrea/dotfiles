@@ -60,3 +60,5 @@
 ;; package.elでやったことがCaskに反映される（このファイル)
 (depends-on "pallet")
 
+(depends-on "mew")
+

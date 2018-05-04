@@ -1,7 +1,4 @@
-;;;;; .emacs
-
-;;; uncomment this line to disable loading of "default.el" at startup
-;; (setq inhibit-default-init t)
+;;; Package --- summary
 
 (require 'cask "~/.cask/cask.el")
 (cask-initialize)
@@ -15,9 +12,9 @@
 (when (fboundp 'global-font-lock-mode)
   (global-font-lock-mode t))
 
-;; melpaのmewが動かないのでgitで持ってくる
-(setq load-path (cons "~/lib/emacs/mew" load-path))
-(setq exec-path (cons "~/lib/emacs/mew/bin" exec-path))
+
+;; mailer
+(use-package mew)
 
 ;; enable visual feedback on selections
 ;(setq transient-mark-mode t)
@@ -39,19 +36,18 @@
 (set-buffer-file-coding-system 'utf-8-unix)
 
 (global-set-key "\C-xm" 'set-mark-command)
-;; % でmatch
 
- (global-set-key "%" 'match-paren)
- (defun match-paren (arg)
-   "Go to the matching parenthesis if on parenthesis otherwise insert %."
-   (interactive "p")
-   (cond ((looking-at "\\s\(") (forward-list 1) (backward-char 1))
-         ((looking-at "\\s\)") (forward-char 1) (backward-list 1))
-         (t (self-insert-command (or arg 1)))))
+
+;; % でmatch
+(global-set-key "%" 'match-paren)
+(defun match-paren (arg)
+  "Go to the matching parenthesis if on parenthesis otherwise insert %."
+  (interactive "p")
+  (cond ((looking-at "\\s\(") (forward-list 1) (backward-char 1))
+        ((looking-at "\\s\)") (forward-char 1) (backward-list 1))
+        (t (self-insert-command (or arg 1)))))
 
 ;;
-
-
 
 (setq display-time-24hr-format t)
 (setq display-time-string-forms
@@ -105,10 +101,6 @@
 
 ;; flymake (Emacs22から標準添付されている)
 (use-package flymake)
-
-;;; A sample file of .emacs or a site configuration file
-
-(use-package mew)
 
 ;; ruby-mode
 
