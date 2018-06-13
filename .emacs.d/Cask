@@ -62,3 +62,6 @@
 
 (depends-on "mew")
 
+; React
+(depends-on "rjsx-mode")
+
