@@ -5,7 +5,12 @@ set -eux
 TARGET=~/.emacs.d
 
 mkdir -p $TARGET
-cp .emacs.d/Cask .emacs.d/init.el $TARGET
+DIR=`pwd`
+FILES="Cask init.el"
+
+for f in $FILES ; do
+  ln -s $DIR/.emacs.d/$f ~/.emacs.d/$f
+done
 
 cd $TARGET
 cask install
