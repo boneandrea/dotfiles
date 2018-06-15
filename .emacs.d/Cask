@@ -64,3 +64,6 @@
 (depends-on "arduino-mode")
 
 
+; React
+(depends-on "rjsx-mode")
+
