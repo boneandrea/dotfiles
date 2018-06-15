@@ -61,4 +61,6 @@
 (depends-on "pallet")
 
 (depends-on "mew")
+(depends-on "arduino-mode")
+
 
