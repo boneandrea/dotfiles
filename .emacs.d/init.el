@@ -1,12 +1,21 @@
+;;; Commentary: .emacs
 ;;; Package --- summary
 
+
 (require 'cask "~/.cask/cask.el")
+
+;;; Code:
 (cask-initialize)
 
 ;; 初期化
 (package-initialize)
 (require 'use-package)
 
+;; package-selected-packages がinit.elに書かれる問題
+;; http://extra-vision.blogspot.com/2016/10/emacs25-package-selected-packages.html
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+(when (file-exists-p custom-file)
+  (load custom-file))
 
 ;; turn on font-lock mode
 (when (fboundp 'global-font-lock-mode)
@@ -215,22 +224,6 @@
 (add-hook 'web-mode-hook 'web-mode-hook)
 ;(setq web-mode-disable-auto-pairing nil)
 
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (markdown-mode 0xc nginx-mode clang-format coffee-mode slim-mode rjsx-mode kotlin-mode magit php-mode use-package))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
-
 ;; rjsx-mode タブ設定
 (add-to-list 'auto-mode-alist '("\\.js$"     . rjsx-mode))
 
@@ -254,7 +247,7 @@
 (define-key ctl-x-map "a" ' flycheck-next-error)
 (define-key ctl-x-map "z" ' flycheck-prev-error)
 
-(add-hook 'after-init-hook #'global-flycheck-mode)
+(add-hook 'after-init-hook 'global-flycheck-mode)
 
 ;; clang-format
 (global-set-key "\C-xcf" 'clang-format)
@@ -303,3 +296,19 @@
 ;; (add-hook 'ruby-mode-hook '(lambda () (ruby-electric-mode t)))
 ;; (setq ruby-electric-expand-delimiters-list nil)
 (put 'downcase-region 'disabled nil)
+
+
+;; arduino
+(use-package arduino-mode)
+
+
+;; use tab instead of spaces when Makefile-mode
+(add-hook 'makefile-mode-hook
+  (function (lambda ()
+    (setq indent-tabs-mode t))))
+
+
+(eval-after-load "sql"
+  '(load-library "sql-indent"))
+
+

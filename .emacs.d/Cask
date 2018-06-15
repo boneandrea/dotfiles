@@ -51,7 +51,7 @@
 (depends-on "ruby-block")
 
 
-; vue
+;; vue
 (depends-on "vue-mode")
 (depends-on "vue-html-mode")
 (depends-on "mmm-mode")
@@ -63,7 +63,7 @@
 (depends-on "mew")
 (depends-on "arduino-mode")
 
-
-; React
-(depends-on "rjsx-mode")
+;; なぜなかった
+(depends-on "sql-mode")
+(depends-on "sql-indent")
 
