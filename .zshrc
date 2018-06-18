@@ -2,28 +2,17 @@
 #
 # ~/.zshrc
 #
-#export QTDIR=/opt/QT/qt-4.7.4
-#export QTDIR=/opt/QT/qt-4.7.4-debug
-#export QTDIR=/opt/QT/4.8.2-debug
-#export QTDIR=/opt/QT/4.8.2-arm
-export QTDIR=/opt/QT/4.8.2
-#export QTDIR=/home/banchou/QT/4.8.2
-#export QTDIR=/opt/QT/qt-4.7.4-embedded
-#export QTDIR=/opt/QT/5.0.0
-#export QTDIR=/opt/QT/qt-5.1.1
-export QTDIR=/opt/QT/5.3.1
-
-
-
-PATH=$QTDIR/bin:/usr/local/arm/4.3.2/bin:$PATH
 PATH=/usr/local/bin:~/lib/emacs/bin:~/bin:$PATH
-PATH=$HOME/work/funaibin:$PATH
+PATH=~/work/arduino:$PATH
+PATH=/home/banchou/.cask/bin:$PATH
+PATH=~/.rbenv/bin:$PATH
 
 
 ANDROID_ROOT=/opt/adt-bundle-linux-x86_64
 
 PATH=${ANDROID_ROOT}/eclipse:${ANDROID_ROOT}/sdk/platform-tools:$PATH
 PATH=${ANDROID_ROOT}/sdk/tools:$PATH
+
 PATH=/opt/google/chrome:$PATH
 
 # eclipse LUNA
@@ -74,18 +63,6 @@ export PATH
 	export ATTRIBUTION='%f wrote:'
 	export XLIB_SKIP_ARGB_VISUALS=1
 
-#	export http_proxy="http://192.168.207.100:8081"
-# Qt
-
-#
-# Android-studio
-
-# either STUDIO_JDK, JDK_HOME, or JAVA_HOME environment variable points to valid Oracle (Sun) JDK installation.
-#export JDK_HOME=/opt/jdk
-#export JAVA_HOME=/opt/jdk
-
-#export JAVA_HOME CLASSPATH
-#export ANDROID_STUDIO_JDK=/opt/jdk
 
 export GTK_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
@@ -186,22 +163,20 @@ RPROMPT=' %~ %1(v|%F{green}%1v%f|) [%T]'
 
 umask 022
 
-#urlencode () {
-#        echo $* | nkf -wMQ | tr = %
-#}
-#urldecode () {
-#        echo $* | tr % = | nkf -wmQ
-#}
+urlencode () {
+        echo $* | nkf -wMQ | tr = %
+}
+urldecode () {
+        echo $* | tr % = | nkf -wmQ
+}
 
-## node.jsにも手を出したよ
-
-#export NODE_PATH=/home/banchou/.nvm/v0.10.19/lib/node_modules:.
-#. ~/.nvm/nvm.sh
+## node.js
+. ~/.nvm/nvm.sh
 
 
-#nvm use v0.10.19 > /dev/null
+nvm use stable > /dev/null
 
-#eval "$(rbenv init -)"
+eval "$(rbenv init -)"
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
@@ -215,8 +190,5 @@ export JAVA_HOME=/usr/lib/jvm/java-8-oracle
 export PATH=$JAVA_HOME/bin:$PATH
 export LD_LIBRARY_PATH=/usr/arm-linux-gnueabihf/lib
 
-# Oracle 文字化け
-
-export NLS_LANG=JAPANESE_JAPAN.AL32UTF8
-
 alias xm="xmodmap ~/.Xmodmap"
+
