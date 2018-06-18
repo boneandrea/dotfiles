@@ -1,6 +1,6 @@
 #!/bin/sh
 
-set -eux
+set -ux
 
 TARGET=~/.emacs.d
 
@@ -9,6 +9,7 @@ DIR=`pwd`
 FILES="Cask init.el"
 
 for f in $FILES ; do
+  rm ~/.emacs.d/$f
   ln -s $DIR/.emacs.d/$f ~/.emacs.d/$f
 done
 
