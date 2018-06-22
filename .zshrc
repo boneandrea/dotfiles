@@ -151,6 +151,13 @@ fi
 RPROMPT=' %~ %1(v|%F{green}%1v%f|) [%T]'
 
 
+if [ -x `which dircolors` ]; then
+  dircolors -p >| ~/.dir_colors
+fi
+
+if [ -f ~/.dir_colors ]; then
+  eval $(dircolors ~/.dir_colors)
+fi
 
 #cd ~
 
