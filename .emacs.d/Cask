@@ -67,3 +67,5 @@
 (depends-on "sql-mode")
 (depends-on "sql-indent")
 
+(depends-on "pug-mode")
+

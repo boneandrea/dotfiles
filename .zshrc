@@ -18,6 +18,8 @@ PATH=/opt/google/chrome:$PATH
 # eclipse LUNA
 PATH=/opt/eclipse-luna:$PATH
 
+export PERL5LIB=~/perl5/lib/perl5
+
 
 
 export PATH

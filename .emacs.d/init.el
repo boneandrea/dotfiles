@@ -203,6 +203,9 @@
            )
   )
 
+(use-package pug-mode
+  :mode (("\\.pug$"     . pug-mode)))
+
 ;; ;;; 適用する拡張子
 ;; (add-to-list 'auto-mode-alist '("\\.phtml$"     . web-mode))
 ;; (add-to-list 'auto-mode-alist '("\\.ctp$"       . web-mode))
