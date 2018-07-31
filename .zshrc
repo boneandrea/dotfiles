@@ -20,8 +20,6 @@ PATH=/opt/eclipse-luna:$PATH
 
 export PERL5LIB=~/perl5/lib/perl5
 
-
-
 export PATH
 
 	stty erase 
@@ -200,4 +198,8 @@ export PATH=$JAVA_HOME/bin:$PATH
 export LD_LIBRARY_PATH=/usr/arm-linux-gnueabihf/lib
 
 alias xm="xmodmap ~/.Xmodmap"
+
+
+# GNU screen
+export SCREENDIR=$HOME/.screen
 
