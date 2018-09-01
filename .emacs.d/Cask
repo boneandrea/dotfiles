@@ -69,3 +69,6 @@
 
 (depends-on "pug-mode")
 
+(depends-on "gradle-mode")
+(depends-on "groovy-mode")
+
