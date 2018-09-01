@@ -1,4 +1,4 @@
-;;; Package-- - summary
+;;; Package --- summary
 ;;; Commentary:
 ;;;Code:
 
@@ -11,10 +11,13 @@
              (setq indent-tabs-mode nil)
              (setq c-basic-offset 2)
              ))
-;(add-hook 'java-common-hook
-;          '(lambda ()
-;             (add-hook 'before-save-hook
-;                       'clang-format-buffer
-;                       )))
+
+(add-hook 'java-mode-hook
+         '(lambda ()
+            (add-hook 'before-save-hook
+                      'clang-format-buffer
+                      'nil
+                      'local
+                      )))
 
 ;;; 05_java.el ends here
