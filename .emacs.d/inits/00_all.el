@@ -1,5 +1,7 @@
-;;; Commentary: .emacs
-;;; Package --- summary
+;;; Package --- common configure
+;;; Commentary:
+;;; Code:
+
 
 ;; package-selected-packages がinit.elに書かれる問題
 ;; http://extra-vision.blogspot.com/2016/10/emacs25-package-selected-packages.html
@@ -188,4 +190,5 @@
 
 (eval-after-load "sql"
   '(load-library "sql-indent"))
-
+(provide '00_all)
+;;; ends here

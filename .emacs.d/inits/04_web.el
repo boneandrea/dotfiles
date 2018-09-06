@@ -1,5 +1,6 @@
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; web-mode.el
+;;; Package --- web specific
+;;; Commentary:
+;;; Code:
 
 (use-package web-mode
   :mode (("\\.phtml$"     . web-mode)

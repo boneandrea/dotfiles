@@ -1,6 +1,6 @@
 ;;; Package --- summary
 ;;; Commentary:
-;;;Code:
+;;; Code:
 
 ;
 ; clang-format
@@ -20,4 +20,4 @@
                       'local
                       )))
 
-;;; 05_java.el ends here
+;;; ends here

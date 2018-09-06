@@ -1,4 +1,7 @@
-;; php-mode
+;;; Package --- specific
+;;; Commentary:
+;;; Code:
+
 (use-package php-mode)
 
 (add-to-list 'auto-mode-alist '("\\.php$"     . php-mode))
@@ -13,4 +16,4 @@
             (setq c-basic-offset 4)
             (setq indent-tabs-mode nil)
 ))
-
+;;; ends here

@@ -1,4 +1,6 @@
-;; ruby-mode
+;;; Package --- ruby specific
+;;; Commentary:
+;;; Code:
 
 (use-package ruby-mode)
 (setq auto-mode-alist
@@ -14,7 +16,7 @@
 (defun ruby-mode-hook-ruby-block()
   (ruby-block-mode t))
 (add-hook 'ruby-mode-hook 'ruby-mode-hook-ruby-block)
-; ruby-block-delay を0.50 → 0に設定
+                                        ; ruby-block-delay を0.50 → 0に設定
 (defcustom ruby-block-delay 0
   "*Time in seconds to delay before showing a matching paren."
   :type  'number
@@ -26,3 +28,9 @@
 
 (autoload 'rspec-mode "rspec-mode")
 (add-hook 'ruby-mode-hook 'rspec-mode)
+
+
+(add-hook 'ruby-mode-hook
+          '(lambda ()
+             (setq flycheck-checker 'ruby-rubocop)
+             (flycheck-mode 1)))
