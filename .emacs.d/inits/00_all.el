@@ -190,5 +190,9 @@
 
 (eval-after-load "sql"
   '(load-library "sql-indent"))
+
+(add-hook 'before-save-hook 'delete-trailing-whitespace) ;; 行末の空白を削除
+(setq-default show-trailing-whitespace t) ;; 行末の空白をハイライト
+
 (provide '00_all)
 ;;; ends here
