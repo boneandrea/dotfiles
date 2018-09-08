@@ -2,6 +2,7 @@
 (source marmalade)
 (source melpa)
 
+(depends-on "init-loader")
 (depends-on "ansi")
 (depends-on "bind-key")
 (depends-on "blockdiag-mode")
