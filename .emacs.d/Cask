@@ -3,9 +3,12 @@
 (source melpa)
 
 (depends-on "init-loader")
+(depends-on "pallet")
+
 (depends-on "ansi")
 (depends-on "bind-key")
 (depends-on "blockdiag-mode")
+(depends-on "rjsx-mode")
 (depends-on "js2-mode")
 (depends-on "cask")
 (depends-on "clang-format")
@@ -72,4 +75,3 @@
 
 (depends-on "gradle-mode")
 (depends-on "groovy-mode")
-
