@@ -75,3 +75,6 @@
 
 (depends-on "gradle-mode")
 (depends-on "groovy-mode")
+
+
+(depends-on "markdown-mode")
