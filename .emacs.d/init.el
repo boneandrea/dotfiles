@@ -7,6 +7,7 @@
 (package-initialize)
 (require 'use-package)
 
+(add-to-list 'load-path "~/.emacs.d/local-lisp")
 
 (custom-set-variables
  '(init-loader-show-log-after-init 'error-only))
