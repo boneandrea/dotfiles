@@ -2,7 +2,6 @@
 ;;; Commentary:
 ;;; Code:
 
-
 ;; package-selected-packages がinit.elに書かれる問題
 ;; http://extra-vision.blogspot.com/2016/10/emacs25-package-selected-packages.html
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
@@ -83,7 +82,7 @@
 ;;(add-hook 'ruby-mode-hook 'gtags-mode)
 
 ; qml-mode
-;; (add-to-list 'auto-mode-alist (cons  "\\.qml" 'qml-mode))
+;; (add-to-list 'auto-mode-alist (cons  "\\.qml" 'qml-mode)
 ;; (autoload 'qml-mode "qml-mode" t)
 ;; (setq-default indent-tabs-mode t) ;; default = nil
 
@@ -191,8 +190,33 @@
 (eval-after-load "sql"
   '(load-library "sql-indent"))
 
-(add-hook 'before-save-hook 'delete-trailing-whitespace) ;; 行末の空白を削除
-(setq-default show-trailing-whitespace t) ;; 行末の空白をハイライト
+
+;; https://qiita.com/yynozk/items/f5ccc2b027a9aaa13fe4
+(cond (window-system
+       (setq x-select-enable-clipboard t)
+       ))
+
+
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+;; (load-library "hideshow")
+;; (autoload 'hideshowvis-enable "hideshowvis" "Highlight foldable regions")
+;; (dolist (hook (list 'emacs-lisp-mode-hook
+;;                     'c++-mode-hook
+;;                     'JSON-mode-hook
+;;                     'json-mode-hook
+;;                     'javascript-mode-hook
+;;                     'python-mode-hook))
+;;   (add-hook hook 'hideshowvis-enable))
+
+;; (add-to-list 'folding-mode-marks-alist (JSON-mode "// {{{" "// }}}"))
+
+
+(use-package 'vimish-fold)
+
+(global-set-key (kbd "\C-ccf")    'vimish-fold)
+(global-set-key (kbd "\C-c f")    'vimish-fold-toggle)
+(global-set-key (kbd "\C-cdf")    'vimish-fold-delete-all)
 
 (provide '00_all)
 ;;; ends here

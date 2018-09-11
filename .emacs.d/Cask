@@ -2,13 +2,9 @@
 (source marmalade)
 (source melpa)
 
-(depends-on "init-loader")
-(depends-on "pallet")
-
 (depends-on "ansi")
 (depends-on "bind-key")
 (depends-on "blockdiag-mode")
-(depends-on "rjsx-mode")
 (depends-on "js2-mode")
 (depends-on "cask")
 (depends-on "clang-format")
@@ -68,13 +64,21 @@
 (depends-on "arduino-mode")
 
 ;; なぜなかった
-(depends-on "sql-mode")
-(depends-on "sql-indent")
+;;(depends-on "sql-mode")
+;;(depends-on "sql-indent")
 
 (depends-on "pug-mode")
+(depends-on "gtags")
 
 (depends-on "gradle-mode")
 (depends-on "groovy-mode")
+(depends-on "auto-complete")
+(depends-on "rspec-mode")
 
+;;; .emacs肥大.25年目にして初の分割
+(depends-on "init-loader")
 
+(depends-on "json-mode")
+(depends-on "rjsx-mode")
 (depends-on "markdown-mode")
+(depends-on "vimish-fold")
