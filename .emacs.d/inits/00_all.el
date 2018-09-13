@@ -212,7 +212,7 @@
 ;; (add-to-list 'folding-mode-marks-alist (JSON-mode "// {{{" "// }}}"))
 
 
-(use-package 'vimish-fold)
+(use-package vimish-fold)
 
 (global-set-key (kbd "\C-ccf")    'vimish-fold)
 (global-set-key (kbd "\C-c f")    'vimish-fold-toggle)
