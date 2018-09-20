@@ -7,5 +7,6 @@ defhstatus "^En:^Et"
 #termcapinfo xterm 'hs:ts=2;:fs=\007:ds=]0'
 #hardstatus alwayslastline "%w"
 #hardstatus alwayslastline "[%02c] %`%-w%{=b bw}%n %t%{-}%+w"
+defutf8 on
 defencoding UTF-8
 termcapinfo xterm* ti@:te@
