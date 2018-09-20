@@ -177,12 +177,6 @@ urldecode () {
         echo $* | tr % = | nkf -wmQ
 }
 
-## node.js
-. ~/.nvm/nvm.sh
-
-
-nvm use stable > /dev/null
-
 eval "$(rbenv init -)"
 
 ### Added by the Heroku Toolbelt

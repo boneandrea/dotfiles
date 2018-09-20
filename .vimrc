@@ -1,6 +1,7 @@
 set foldmethod=syntax
 let perl_fold=1
 set foldlevel=100
+set encoding=utf-8
 
 set number
 filetype on
