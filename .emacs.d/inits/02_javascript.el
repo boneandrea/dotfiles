@@ -18,4 +18,9 @@
 (add-hook 'JSON-mode-hook 'hs-minor-mode)
 (add-hook 'json-mode-hook 'hs-minor-mode)
 
+
+(require 'prettier-js)
+(add-hook 'js2-mode-hook 'prettier-js-mode)
+(add-hook 'web-mode-hook 'prettier-js-mode)
+
 ;;; ends here

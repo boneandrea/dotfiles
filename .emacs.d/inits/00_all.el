@@ -218,5 +218,9 @@
 (global-set-key (kbd "\C-c f")    'vimish-fold-toggle)
 (global-set-key (kbd "\C-cdf")    'vimish-fold-delete-all)
 
+(use-package nginx-mode)
+(add-to-list 'auto-mode-alist '("nginx\\(.*\\).conf[^/]*$" . nginx-mode))
+
+
 (provide '00_all)
 ;;; ends here
