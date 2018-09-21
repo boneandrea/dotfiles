@@ -82,3 +82,4 @@
 (depends-on "rjsx-mode")
 (depends-on "markdown-mode")
 (depends-on "vimish-fold")
+(depends-on "nginx-mode")
