@@ -2,17 +2,10 @@
 #
 # ~/.zshrc
 #
-PATH=/usr/local/bin:~/lib/emacs/bin:~/bin:$PATH
+PATH=/usr/local/bin:~/bin:$PATH
 PATH=~/work/arduino:$PATH
-PATH=/home/banchou/.cask/bin:$PATH
 PATH=~/.rbenv/bin:$PATH
-
-
-ANDROID_ROOT=/opt/adt-bundle-linux-x86_64
-
-PATH=${ANDROID_ROOT}/eclipse:${ANDROID_ROOT}/sdk/platform-tools:$PATH
-PATH=${ANDROID_ROOT}/sdk/tools:$PATH
-
+PATH=~/.cask/bin:$PATH
 PATH=/opt/google/chrome:$PATH
 
 # eclipse LUNA
@@ -31,6 +24,7 @@ export PATH
 	limit -s
 	umask 022
 	#cdpath=( . ~/ $cdpath )
+
 #
 # --- shell variables ---
 #
@@ -58,11 +52,6 @@ export PATH
 	export LESS='-R'
 	export LESSOPEN='| /usr/share/source-highlight/src-hilite-lesspipe.sh %s'
 	export JLESSCHARSET=japanese
-	export MAILCALL='NEW MAIL! '
-	export YOUSAID='In %C you wrote:'
-	export ATTRIBUTION='%f wrote:'
-	export XLIB_SKIP_ARGB_VISUALS=1
-
 
 export GTK_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
@@ -136,10 +125,7 @@ precmd () {
     [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
 }
 
-#
 # --- prompt ---
-#
-
 if [ "x"$WINDOW = "x" ]; then
 	PROMPT="%{%B[34m%}`whoami`@`hostname -s`:%c%b%{[m%}%% "
 else
@@ -161,12 +147,6 @@ fi
 
 #cd ~
 
-# RVM
-#[ -s ${HOME}/.rvm/scripts/rvm ] && source ${HOME}/.rvm/scripts/rvm
-#PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-
-[[ -s "/home/banchou/.rvm/scripts/rvm" ]] && source "/home/banchou/.rvm/scripts/rvm"  # This loads RVM into a shell session.
-
 
 umask 022
 
@@ -177,22 +157,17 @@ urldecode () {
         echo $* | tr % = | nkf -wmQ
 }
 
+#
 eval "$(rbenv init -)"
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
-xmodmap $HOME/.Xmodmap 2> /dev/null
-
 
 # Java (ARM) CROSS ENV
-
 export JAVA_HOME=/usr/lib/jvm/java-8-oracle
 export PATH=$JAVA_HOME/bin:$PATH
 export LD_LIBRARY_PATH=/usr/arm-linux-gnueabihf/lib
-
-alias xm="xmodmap ~/.Xmodmap"
-
 
 # GNU screen
 export SCREENDIR=$HOME/.screen
