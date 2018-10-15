@@ -6,7 +6,7 @@ TARGET=~/.emacs.d
 
 mkdir -p $TARGET
 DIR=`pwd`
-FILES="Cask init.el inits"
+FILES="Cask init.el inits local-lisp"
 
 for f in `ls ./.emacs.d` ; do
   rm -rf ~/.emacs.d/$f
