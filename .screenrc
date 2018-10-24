@@ -8,5 +8,6 @@ defhstatus "^En:^Et"
 #hardstatus alwayslastline "%w"
 #hardstatus alwayslastline "[%02c] %`%-w%{=b bw}%n %t%{-}%+w"
 defutf8 on
-defencoding UTF-8
+defencoding utf8
+encoding utf8 utf8
 termcapinfo xterm* ti@:te@
