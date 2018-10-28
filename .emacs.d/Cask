@@ -83,3 +83,7 @@
 (depends-on "markdown-mode")
 (depends-on "vimish-fold")
 (depends-on "nginx-mode")
+
+(depends-on "prettier-js")
+(depends-on "exec-path-from-shell")
+

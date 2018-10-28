@@ -15,6 +15,8 @@
 ;; elispが配布されてる場合
 (setq load-path (cons "~/.emacs.d/elisp" load-path))
 
+(exec-path-from-shell-initialize)
+
 ;; mailer
 (use-package mew)
 

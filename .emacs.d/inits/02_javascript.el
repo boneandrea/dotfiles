@@ -3,7 +3,7 @@
 ;;; Code:
 
 (use-package js2-mode)
-(add-to-list 'auto-mode-alist (cons  "\\.\\(qml\\|js\\)\\'" 'js2-mode))
+(add-to-list 'auto-mode-alist (cons  "\\.js\\'" 'js2-mode))
 (setq js-indent-level 2)
 
 
@@ -19,8 +19,21 @@
 (add-hook 'json-mode-hook 'hs-minor-mode)
 
 
-(require 'prettier-js)
+(use-package prettier-js)
 (add-hook 'js2-mode-hook 'prettier-js-mode)
-(add-hook 'web-mode-hook 'prettier-js-mode)
+
+(add-hook 'js2-mode-hook
+          (lambda ()
+            (add-hook 'after-save-hook 'prettier-js t t)
+            (setq js2-strict-missing-semi-warning nil)
+            (setq js2-mode-show-parse-errors nil)
+            (setq js2-mode-show-strict-warnings nil)
+            ))
+
+(setq prettier-js-args '(
+                         "--bracket-spacing" "false"
+                         "--tab-width" "2"
+                         "--no-semi"
+                         ))
 
 ;;; ends here

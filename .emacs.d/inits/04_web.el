@@ -36,6 +36,7 @@
   (setq web-mode-php-offset    2)
   (setq web-mode-java-offset   2)
   (setq web-mode-asp-offset    2)
+  (setq indent-tabs-mode nil)
   (setq web-mode-markup-indent-offset   2))
 
 (add-hook 'web-mode-hook 'web-mode-hook)
