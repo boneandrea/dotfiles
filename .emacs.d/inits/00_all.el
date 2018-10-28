@@ -15,6 +15,7 @@
 ;; elispが配布されてる場合
 (setq load-path (cons "~/.emacs.d/elisp" load-path))
 
+;; import $ENV["PATH"]
 (exec-path-from-shell-initialize)
 
 ;; mailer

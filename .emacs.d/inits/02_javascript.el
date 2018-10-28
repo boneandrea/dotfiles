@@ -30,6 +30,9 @@
             (setq js2-mode-show-strict-warnings nil)
             ))
 
+(eval-after-load 'js2-mode
+  '(add-hook 'js2-mode-hook #'add-node-modules-path))
+
 (setq prettier-js-args '(
                          "--bracket-spacing" "false"
                          "--tab-width" "2"
