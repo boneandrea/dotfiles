@@ -87,3 +87,6 @@
 (depends-on "prettier-js")
 (depends-on "exec-path-from-shell")
 
+
+;; php 関数名補完
+(depends-on "ac-php")

@@ -133,15 +133,6 @@
 ;; 全部スペースでインデントしましょう
 (add-hook 'rst-mode-hook '(lambda() (setq indent-tabs-mode nil)))
 
-
-;; java format: clang-format
-(global-set-key "\C-xcf" 'clang-format)
-(add-hook 'java-mode-common-hook
-          '(lambda ()
-                      (add-hook 'after-save-hook
-                                'clang-format-buffer)))
-
-
 (when (boundp 'indent-rigidly-map)
   ;; 矢印ではなく f b で簡単にインデントできるようにする
   (define-key indent-rigidly-map (kbd "f") 'indent-rigidly-right-to-tab-stop)
