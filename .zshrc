@@ -161,11 +161,11 @@ urldecode () {
     echo $* | tr % = | nkf -wmQ
 }
 
-#
-eval "$(rbenv init -)"
-
 export PATH=$HOME/.anyenv/bin:$PATH
 eval "$(anyenv init -)"
+
+#
+eval "$(rbenv init -)"
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
