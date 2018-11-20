@@ -91,3 +91,8 @@
 ;; php 関数名補完
 (depends-on "cl")
 (depends-on "ac-php")
+
+
+
+;; https://github.com/codesuki/add-node-modules-path
+(depends-on "add-node-modules-path")
