@@ -216,5 +216,14 @@
 (add-to-list 'auto-mode-alist '("nginx\\(.*\\).conf[^/]*$" . nginx-mode))
 
 
+;; docker
+(use-package docker)
+(use-package dockerfile-mode)
+(add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode))
+(use-package docker-compose-mode)
+(use-package docker-tramp-compat)
+(set-variable 'docker-tramp-use-names t)
+
+
 (provide '00_all)
 ;;; ends here
