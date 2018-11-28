@@ -8,7 +8,7 @@
 (add-to-list 'auto-mode-alist '("\\.php$"     . php-mode))
 
 ;; php-mode タブ設定とか
-(setq php-mode-force-pear t)
+;;(setq php-mode-force-pear t)
 
 
 (add-hook 'php-mode-hook
@@ -20,7 +20,7 @@
 
              ;; ac-modeの設定
              (auto-complete-mode t)
-             (require 'ac-php)
+             (use-package ac-php)
              (setq ac-sources  '(ac-source-php ) )
              (yas-global-mode 1)
              (ac-php-core-eldoc-setup ) ;; enable eldoc
