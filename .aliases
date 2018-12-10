@@ -10,3 +10,5 @@ alias ls="\ls -F --color=auto"
 alias pi="ssh pi@pi"
 alias sqlplus='rlwrap sqlplus'
 alias x=exit
+
+
