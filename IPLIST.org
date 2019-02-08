@@ -1,0 +1,7 @@
+ declare -A IPLIST;
+ 
+ IPLIST=(
+  ["pro"]="_ip_ _user_"
+  ["stg"]="_ip_ _user_"
+  ["dev"]="_ip_ _user_"
+)

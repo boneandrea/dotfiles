@@ -1,0 +1,64 @@
+#!/bin/bash
+
+function add_ssh_keys {
+    eval `ssh-agent`
+    while read key ; do
+      echo $key
+      ssh-add $key
+    done < .keys
+}
+
+function get_login_info {
+  m=$1
+  arr=(`echo ${IPLIST[$m]}`)
+  echo "${arr[0]} ${arr[1]}"
+}
+
+function login {
+    echo $USER@$IP
+    ssh $USER@$IP "$1"
+}
+
+function check_params {
+    # check param (simple)
+    if [ "$IP" = "" ]; then
+        echo "$MODE not found."
+        usage
+    fi
+}
+
+function get_ip_and_user {
+  arr=(`get_login_info $MODE`)
+  IP=${arr[0]}
+  USER=${arr[1]}
+  unset arr
+}
+
+function usage {
+  echo "Usage: $0 [mode1|mode2|...]. mode: key in IPLIST pro, dev, stg, ....."
+  exit 1
+}
+
+## start
+
+if [ "$USER" = "ec2-user" ]; then
+    EC2=1
+fi
+
+MODE="$1"
+test "$MODE" = "" && usage
+
+#declare -A IPLIST;
+. IPLIST
+
+get_ip_and_user
+check_params
+
+shift
+
+if [ "$EC2" = 1 ]; then
+    USER=ec2-user
+fi
+
+add_ssh_keys
+login "$*"
