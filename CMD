@@ -15,6 +15,11 @@ function get_login_info {
 }
 
 function login {
+    echo "[$0]"
+    if [[ $0 =~ SCP ]]; then
+      scp $* $USER@$IP:
+      exit
+    fi
     echo $USER@$IP
     ssh $USER@$IP "$1"
 }
@@ -35,7 +40,10 @@ function get_ip_and_user {
 }
 
 function usage {
-  echo "Usage: $0 [mode1|mode2|...]. mode: key in IPLIST pro, dev, stg, ....."
+  echo "Usage:"
+  echo "  $0 mode"
+  echo "  SCP mode file"
+  echo "  mode: key in IPLIST pro, dev, stg, ....."
   cat IPLIST
   exit 1
 }
@@ -49,7 +57,7 @@ fi
 MODE="$1"
 test "$MODE" = "" && usage
 
-#declare -A IPLIST;
+declare -A IPLIST;
 . IPLIST
 
 get_ip_and_user
