@@ -2,16 +2,11 @@
 #
 # ~/.zshrc
 #
-PATH=/usr/local/bin:~/bin:$PATH
-PATH=~/work/arduino:$PATH
-PATH=~/.rbenv/bin:$PATH
-PATH=~/.cask/bin:$PATH
-PATH=/opt/google/chrome:$PATH
 
-# eclipse LUNA
-PATH=/opt/eclipse-luna:$PATH
-
-export PERL5LIB=~/perl5/lib/perl5
+# zcompile automatically
+if [ ~/.zshrc -nt ~/.zshrc.zwc ]; then
+    zcompile ~/.zshrc
+fi
 
 export PATH
 
@@ -21,10 +16,10 @@ stty susp 
 unlimit
 limit stack 8192
 #	limit core 0
-
 limit -s
 umask 022
 #cdpath=( . ~/ $cdpath )
+
 #
 # --- shell variables ---
 #
@@ -37,32 +32,6 @@ DIRSTACKSIZE=50
 SAVEHIST=800
 LOGCHECK=0
 READNULLCMD=less
-
-#
-# --- environment variables ---
-#
-export LANG=C
-export LANG=ja_JP.UTF-8
-export LESSCHARSET=UTF-8
-export LC_TIME=C
-export LC_MESSAGES=C
-export EDITOR=vi
-export PAGER=less
-#export LESS='-Q -i -r'
-export LESS='-R'
-export LESSOPEN='| /usr/share/source-highlight/src-hilite-lesspipe.sh %s'
-export JLESSCHARSET=japanese
-export MAILCALL='NEW MAIL! '
-export YOUSAID='In %C you wrote:'
-export ATTRIBUTION='%f wrote:'
-export XLIB_SKIP_ARGB_VISUALS=1
-
-export GTK_IM_MODULE=fcitx
-export XMODIFIERS=@im=fcitx
-export QT_IM_MODULE=fcitx
-
-#
-
 
 #
 # --- Shell options ---
@@ -161,20 +130,20 @@ urldecode () {
     echo $* | tr % = | nkf -wmQ
 }
 
-export PATH=$HOME/.anyenv/bin:$PATH
-eval "$(anyenv init -)"
-
 #
-eval "$(rbenv init -)"
 
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
+if [ type -a anyenv ]; then
+    eval "$(anyenv init -)"
+fi
 
+if [ type -a pyenv ]; then
+    eval "$(pyenv init -)"
+fi
 
-# Java (ARM) CROSS ENV
-export JAVA_HOME=/usr/lib/jvm/java-8-oracle
-export PATH=$JAVA_HOME/bin:$PATH
-export LD_LIBRARY_PATH=/usr/arm-linux-gnueabihf/lib
+if [ type -a rbenv ]; then
+    eval "$(rbenv init -)"
+fi
 
-# GNU screen
-export SCREENDIR=$HOME/.screen
+if [ type -a nodenv ]; then
+    eval "$(nodenv init -)"
+fi

@@ -225,5 +225,8 @@
 (set-variable 'docker-tramp-use-names t)
 
 
+;; tramp
+(setq tramp-auto-save-directory "/tmp")
+
 (provide '00_all)
 ;;; ends here
