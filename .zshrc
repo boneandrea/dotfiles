@@ -130,20 +130,12 @@ urldecode () {
     echo $* | tr % = | nkf -wmQ
 }
 
-#
+# anyenv
+ENVS="anyenv pyenv rbenv nodenv"
 
-if [ type -a anyenv ]; then
-    eval "$(anyenv init -)"
-fi
+for e in `echo $ENVS`; do
+  if type -a $e > /dev/null 2>&1 ; then
+    eval "$($e init -)"
+  fi
+done
 
-if [ type -a pyenv ]; then
-    eval "$(pyenv init -)"
-fi
-
-if [ type -a rbenv ]; then
-    eval "$(rbenv init -)"
-fi
-
-if [ type -a nodenv ]; then
-    eval "$(nodenv init -)"
-fi
