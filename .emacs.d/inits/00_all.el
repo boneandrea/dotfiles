@@ -191,7 +191,24 @@
        ))
 
 
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
+;; 行末スペース削除するが
+(defvar delete-trailing-whitespece-before-save t)
+(defun my-delete-trailing-whitespace ()
+ (if delete-trailing-whitespece-before-save
+     (delete-trailing-whitespace)))
+(add-hook 'before-save-hook 'my-delete-trailing-whitespace)
+
+;; markdown modeではしたくないので
+;; 無効にしたいモードのhook
+(add-hook 'markdown-mode-hook
+          '(lambda ()
+             (set (make-local-variable 'delete-trailing-whitespece-before-save) nil)))
+
+;; (add-hook 'before-save-hook 'delete-trailing-whitespace)
+;; (defvar delete-trailing-whitespece-before-save t)
+;; (make-variable-buffer-local 'delete-trailing-whitespece-before-save)
+;; (advice-add 'delete-trailing-whitespace :before-while
+;;                         (lambda () delete-trailing-whitespece-before-save))
 
 ;; (load-library "hideshow")
 ;; (autoload 'hideshowvis-enable "hideshowvis" "Highlight foldable regions")
