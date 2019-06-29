@@ -139,3 +139,6 @@ for e in `echo $ENVS`; do
   fi
 done
 
+# for TRAMP using emacs
+[[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ '
+
