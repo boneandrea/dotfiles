@@ -18,10 +18,15 @@
 (add-hook 'JSON-mode-hook 'hs-minor-mode)
 (add-hook 'json-mode-hook 'hs-minor-mode)
 
-
+;;
 (use-package prettier-js)
-(add-hook 'js2-mode-hook 'prettier-js-mode)
 
+(eval-after-load 'js2-mode
+    '(progn
+           (add-hook 'js2-mode-hook #'add-node-modules-path)
+           (add-hook 'js2-mode-hook #'prettier-js-mode)))
+
+(add-hook 'js2-mode-hook 'prettier-js-mode)
 (add-hook 'js2-mode-hook
           (lambda ()
             (add-hook 'after-save-hook 'prettier-js t t)
@@ -30,13 +35,8 @@
             (setq js2-mode-show-strict-warnings nil)
             ))
 
-(eval-after-load 'js2-mode
-  '(add-hook 'js2-mode-hook #'add-node-modules-path))
+;; (setq prettier-js-command "ssh")
+;; (setq prettier-js-args '( "pi.local" "prettier"))
 
-(setq prettier-js-args '(
-                         "--bracket-spacing" "false"
-                         "--tab-width" "2"
-                         "--no-semi"
-                         ))
 
 ;;; ends here
