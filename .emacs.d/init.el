@@ -1,3 +1,7 @@
+;;; Package --- init.el
+;;; Commentary:
+;;; Code:
+
 (defvar bootstrap-version)
 (let ((bootstrap-file
        (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
@@ -16,6 +20,11 @@
 (setq straight-use-package-by-default t)
 
 (use-package init-loader)
+
+;;; ログはエラーが出た時のみ
+(custom-set-variables
+ '(init-loader-show-log-after-init 'error-only))
+
 (init-loader-load "~/.emacs.d/inits")
 
 ;;; init.el ends

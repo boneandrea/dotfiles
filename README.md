@@ -1,12 +1,10 @@
-# ~~Caskのinstall~~
-Python2と距離を取りたいのでCaskやめる  
-https://nukosuke.hatenablog.jp/entry/straight-el このへんに移行しようか
+# 何より重要なEmacsの設定
+Caskからstraight.elに乗り換えた
 
 
-簡単だが忘れる
-````
-% curl -fsSkL https://raw.github.com/cask/cask/master/go | python
-% cd ~/.emacs.d
-% ls Cask
-Cask
-% cask install 
+Python2と縁を切れた
+https://qiita.com/yoooz/items/8a97642086611892f4c3
+
+## 初期設定
+不要！
+全部勝手にgit clone && buildする

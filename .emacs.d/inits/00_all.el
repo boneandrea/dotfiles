@@ -2,12 +2,6 @@
 ;;; Commentary:
 ;;; Code:
 
-;; package-selected-packages がinit.elに書かれる問題
-;; http://extra-vision.blogspot.com/2016/10/emacs25-package-selected-packages.html
-;(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
-;(when (file-exists-p custom-file)
-;  (load custom-file))
-
 ;; turn on font-lock mode
 (when (fboundp 'global-font-lock-mode)
   (global-font-lock-mode t))
