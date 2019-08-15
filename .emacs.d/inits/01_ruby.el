@@ -11,7 +11,7 @@
 (setq ruby-deep-indent-paren nil)
 
 ;; ruby-block
-(require 'ruby-block)
+(use-package ruby-block)
 (setq ruby-block-highlight-toggle t)
 (defun ruby-mode-hook-ruby-block()
   (ruby-block-mode t))

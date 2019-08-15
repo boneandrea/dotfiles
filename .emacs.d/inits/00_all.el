@@ -4,9 +4,9 @@
 
 ;; package-selected-packages がinit.elに書かれる問題
 ;; http://extra-vision.blogspot.com/2016/10/emacs25-package-selected-packages.html
-(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
-(when (file-exists-p custom-file)
-  (load custom-file))
+;(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+;(when (file-exists-p custom-file)
+;  (load custom-file))
 
 ;; turn on font-lock mode
 (when (fboundp 'global-font-lock-mode)
@@ -16,6 +16,7 @@
 (setq load-path (cons "~/.emacs.d/elisp" load-path))
 
 ;; import $ENV["PATH"]
+(use-package exec-path-from-shell)
 (exec-path-from-shell-initialize)
 
 ;; mailer
@@ -68,19 +69,10 @@
 ;; no need backup file
 (setq make-backup-files nil)
 
-;;
-
-(global-set-key "\C-h" 'delete-backward-char)
-
-(define-key ctl-x-map "6" 'goto-line)
-(define-key ctl-x-map "7" 'calendar)
-(define-key ctl-x-map "8" 'mew)
-(define-key ctl-x-map "0" 'global-whitespace-mode)
-(define-key ctl-x-map "4" 'magit-status)
-(define-key ctl-x-map ";" 'compile)
-
-(define-key ctl-x-map ":" 'comment-region)
-(define-key ctl-x-map ")" 'revert-buffer)
+;; magit
+(use-package magit)
+(setq magit-auto-revert-mode nil)
+(setq magit-last-seen-setup-instructions "1.4.0")
 
 ;;(add-hook 'ruby-mode-hook 'gtags-mode)
 
@@ -104,14 +96,10 @@
 
 
 ;; flycheck
+(use-package flycheck)
 (define-key ctl-x-map "a" ' flycheck-next-error)
 (define-key ctl-x-map "z" ' flycheck-prev-error)
 (add-hook 'after-init-hook 'global-flycheck-mode)
-
-;; magit
-(use-package magit)
-(setq magit-auto-revert-mode nil)
-(setq magit-last-seen-setup-instructions "1.4.0")
 
 ;; blockdiag-mode
 (use-package blockdiag-mode)
@@ -185,6 +173,20 @@
   '(load-library "sql-indent"))
 
 
+;; global-key
+
+(global-set-key "\C-h" 'delete-backward-char)
+
+(define-key ctl-x-map "6" 'goto-line)
+(define-key ctl-x-map "7" 'calendar)
+(define-key ctl-x-map "8" 'mew)
+(define-key ctl-x-map "0" 'global-whitespace-mode)
+(define-key ctl-x-map "4" 'magit-status)
+(define-key ctl-x-map ";" 'compile)
+
+(define-key ctl-x-map ":" 'comment-region)
+(define-key ctl-x-map ")" 'revert-buffer)
+
 ;; https://qiita.com/yynozk/items/f5ccc2b027a9aaa13fe4
 (cond (window-system
        (setq x-select-enable-clipboard t)
@@ -238,12 +240,15 @@
 (use-package dockerfile-mode)
 (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode))
 (use-package docker-compose-mode)
-(use-package docker-tramp-compat)
+(use-package docker-tramp)
 (set-variable 'docker-tramp-use-names t)
-
 
 ;; tramp
 (setq tramp-auto-save-directory "/tmp")
 
-(provide '00_all)
+;; editorconfig
+(use-package editorconfig)
+(editorconfig-mode 1)
+
+;(provide '00_all)
 ;;; ends here

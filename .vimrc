@@ -1,7 +1,35 @@
+""""""""""""""""
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'alvan/vim-closetag'
+Plugin 'tpope/vim-fugitive'
+Plugin 'vim-airline/vim-airline'
+Plugin 'mattn/vim-sqlfmt'
+"Plugin ''
+"Plugin ''
+
+call vundle#end()
+filetype plugin indent on
+
+""" How to install plugins
+" 
+"vim を開いた状態で、以下を入力して Enter
+":PluginInstall
+"ターミナル上で以下のコマンドを実行
+"$ vim +PluginInstall +qall
+
+
+""""""""""""" custom config
+
 set foldmethod=syntax
 let perl_fold=1
 set foldlevel=100
-set encoding=utf-8
 
 set number
 filetype on
@@ -21,11 +49,22 @@ set virtualedit=block
 set whichwrap=b,s,[,],<,>
 set backspace=indent,eol,start
 
+set nofixeol
+
+
+set autoindent
+
+augroup fileTypeIndent
+    autocmd!
+    autocmd BufNewFile,BufRead *.py setlocal tabstop=4 softtabstop=4 shiftwidth=4
+    autocmd BufNewFile,BufRead *.rb setlocal tabstop=2 softtabstop=2 shiftwidth=2
+augroup END
+
 set sw=2 ts=8 ai
 
 " setting
 "文字コードをUFT-8に設定
-set fenc=utf-8
+
 " バックアップファイルを作らない
 set nobackup
 " スワップファイルを作らない
@@ -43,15 +82,11 @@ set showcmd
 set number
 " 現在の行を強調表示
 set cursorline
-" 現在の行を強調表示（縦）
+" 現在の列を強調表示
 "set cursorcolumn
 " 行末の1文字先までカーソルを移動できるように
 "set virtualedit=onemore
-" インデントはスマートインデント
-set smartindent
-" ビープ音を可視化
 set visualbell
-" 括弧入力時の対応する括弧を表示
 set showmatch
 " ステータスラインを常に表示
 set laststatus=2
@@ -62,11 +97,10 @@ nnoremap j gj
 nnoremap k gk
 
 
-" Tab系
-" Tab文字を半角スペースにする
-set expandtab
 " 行頭以外のTab文字の表示幅（スペースいくつ分）
 set tabstop=2
 " 行頭でのTab文字の表示幅
 set shiftwidth=2
+
+
 

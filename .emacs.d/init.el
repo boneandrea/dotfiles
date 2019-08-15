@@ -1,34 +1,21 @@
-;;; Package-- - summary
-;;; Commentary:
-;;; Code:
+(defvar bootstrap-version)
+(let ((bootstrap-file
+       (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+      (bootstrap-version 5))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+        (url-retrieve-synchronously
+         "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
+         'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file nil 'nomessage))
 
-(require 'cask "~/.cask/cask.el")
-(cask-initialize)
-(package-initialize)
+(straight-use-package 'use-package)
 
-;; init-loader, use-packageのインストール(caskで入らない)
-(require 'package)
-(add-to-list 'package-archives '("melpa"."http://melpa.org/packages/"))
-(package-initialize)
-(unless package-archive-contents (package-refresh-contents))
-(unless (package-installed-p 'use-package)
-  (package-install 'use-package))
+(setq straight-use-package-by-default t)
 
-;; init-loader, use-packageのインストール(caskで入らない)
-(unless (package-installed-p 'init-loader)
-  (package-install 'init-loader))
+(use-package init-loader)
+(init-loader-load "~/.emacs.d/inits")
 
-
-;; (unless (package-installed-p 'use-package)
-;;   (package-install 'use-package))
-
-
-
-(add-to-list 'load-path "~/.emacs.d/local-lisp")
-
-(custom-set-variables
- '(init-loader-show-log-after-init 'error-only))
-(init-loader-load)
-(provide 'init)
-;;; init.el ends here
-(put 'set-goal-column 'disabled nil)
+;;; init.el ends

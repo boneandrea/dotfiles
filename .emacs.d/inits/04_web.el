@@ -4,7 +4,6 @@
 
 (use-package web-mode
   :mode (("\\.phtml$"     . web-mode)
-         ("\\.ctp$"       . web-mode)
          ("\\.tpl\\.php$" . web-mode)
          ("\\.jsp$"       . web-mode)
          ("\\.as[cp]x$"   . web-mode)
@@ -36,8 +35,24 @@
   (setq web-mode-php-offset    2)
   (setq web-mode-java-offset   2)
   (setq web-mode-asp-offset    2)
-  (setq indent-tabs-mode nil)
+  (setq indent-tabs-mode t)
   (setq web-mode-markup-indent-offset   2))
+
+(eval-after-load 'web-mode
+  '(add-hook 'web-mode-hook #'add-node-modules-path))
+
+(defun my/prettier ()
+  (interactive)
+  (shell-command
+    (format "%s --write %s"
+      (shell-quote-argument (executable-find "prettier"))
+      (shell-quote-argument (expand-file-name buffer-file-name))))
+  (revert-buffer t t t))
+
+;; 保存時に自動実行
+(add-hook 'web-mode-hook
+  (lambda ()
+    (add-hook 'after-save-hook 'my/prettier t t)))
 
 (add-hook 'web-mode-hook 'web-mode-hook)
 ;(setq web-mode-disable-auto-pairing nil)

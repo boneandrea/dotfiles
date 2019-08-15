@@ -64,8 +64,8 @@
 (depends-on "arduino-mode")
 
 ;; なぜなかった
-;;(depends-on "sql-mode")
-;;(depends-on "sql-indent")
+(depends-on "sql-mode")
+(depends-on "sql-indent")
 
 (depends-on "pug-mode")
 (depends-on "gtags")
@@ -103,3 +103,7 @@
 (depends-on "dockerfile-mode")
 (depends-on "docker-compose-mode")
 (depends-on "docker-tramp")
+
+(depends-on "editorconfig")
+(depends-on "sql-mode")
+(depends-on "sql-indent")
