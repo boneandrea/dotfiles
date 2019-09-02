@@ -4,8 +4,7 @@
 " https://github.com/VundleVim/Vundle.Vim#quick-start
 "
 " Set up Vundle:
-"   git clone https://github.com/VundleVim/Vundle.vim.git
-"   ~/.vim/bundle/Vundle.vim
+"   git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 "
 " Install Plugins:
 "
