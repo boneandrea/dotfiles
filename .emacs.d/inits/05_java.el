@@ -2,6 +2,7 @@
 ;;; Commentary:
 ;;; Code:
 
+(use-package groovy-mode)
 ;
 ; clang-format
 (global-set-key "\C-xcf" 'clang-format)

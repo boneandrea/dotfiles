@@ -66,7 +66,7 @@
 ;; magit
 (use-package magit)
 (setq magit-auto-revert-mode nil)
-(setq magit-last-seen-setup-instructions "1.4.0")
+;;(setq magit-last-seen-setup-instructions "1.4.0")
 
 ;;(add-hook 'ruby-mode-hook 'gtags-mode)
 

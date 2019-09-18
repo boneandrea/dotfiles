@@ -4,8 +4,7 @@
 " https://github.com/VundleVim/Vundle.Vim#quick-start
 "
 " Set up Vundle:
-"   git clone https://github.com/VundleVim/Vundle.vim.git
-"   ~/.vim/bundle/Vundle.vim
+"   git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 "
 " Install Plugins:
 "
@@ -25,7 +24,7 @@ Plugin 'alvan/vim-closetag'
 Plugin 'tpope/vim-fugitive'
 Plugin 'vim-airline/vim-airline'
 Plugin 'mattn/vim-sqlfmt'
-"Plugin ''
+Plugin 'editorconfig/editorconfig-vim'
 "Plugin ''
 
 call vundle#end()
