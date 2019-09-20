@@ -56,3 +56,5 @@
 
 (add-hook 'web-mode-hook 'web-mode-hook)
 ;(setq web-mode-disable-auto-pairing nil)
+
+(use-package twig-mode)
