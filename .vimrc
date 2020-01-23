@@ -28,7 +28,6 @@ Plugin 'editorconfig/editorconfig-vim'
 "Plugin ''
 
 call vundle#end()
-filetype plugin indent on
 
 """ How to install plugins
 " 
@@ -45,10 +44,15 @@ let perl_fold=1
 set foldlevel=100
 
 set number
-filetype on
+filetype plugin indent on
+
+autocmd BufNewFile,BufRead *.php set filetype=php
+autocmd BufNewFile,BufRead *.ctp set filetype=html
 autocmd FileType python setl autoindent 
 autocmd FileType python setl smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
 autocmd FileType python setl expandtab tabstop=8 shiftwidth=4 softtabstop=4
+autocmd FileType php setlocal tabstop=4 softtabstop=4 shiftwidth=4
+
 
 set number
 set notitle
@@ -76,13 +80,9 @@ augroup END
 set sw=2 ts=8 ai
 
 " setting
-"文字コードをUFT-8に設定
 
-" バックアップファイルを作らない
 set nobackup
-" スワップファイルを作らない
 set noswapfile
-" 編集中のファイルが変更されたら自動で読み直す
 set autoread
 " バッファが編集中でもその他のファイルを開けるように
 set hidden
@@ -114,6 +114,4 @@ nnoremap k gk
 set tabstop=2
 " 行頭でのTab文字の表示幅
 set shiftwidth=2
-
-
 
