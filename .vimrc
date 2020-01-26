@@ -39,6 +39,13 @@ call vundle#end()
 
 """"""""""""" custom config
 
+" ラズパイのviは古い
+if v:version <= 800
+  syntax on
+else
+  set nofixeol
+endif
+
 set foldmethod=syntax
 let perl_fold=1
 set foldlevel=100
@@ -66,7 +73,6 @@ set virtualedit=block
 set whichwrap=b,s,[,],<,>
 set backspace=indent,eol,start
 
-set nofixeol
 
 
 set autoindent
