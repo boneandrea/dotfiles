@@ -8,3 +8,5 @@ https://qiita.com/yoooz/items/8a97642086611892f4c3
 ## 初期設定
 不要！
 全部勝手にgit clone && buildする
+
+(Github page: https://boneandrea.github.io/dotfiles/) 
