@@ -239,13 +239,24 @@
 
 ;; tramp
 (setq tramp-auto-save-directory "/tmp")
+;; trampのwarning出さない
+(setq exec-path-from-shell-check-startup-files nil)
 
 ;; editorconfig
 (use-package editorconfig)
 (editorconfig-mode 1)
 
-; trampのwarning出さない
-(setq exec-path-from-shell-check-startup-files nil)
+;; yafolding https://github.com/zenozeng/yafolding.el
+(defvar yafolding-mode-map
+  (let ((map (make-sparse-keymap)))
+    (define-key map (kbd "<C-S-return>") #'yafolding-hide-parent-element)
+    (define-key map (kbd "<C-M-return>") #'yafolding-toggle-all)
+    (define-key map (kbd "M-RET") #'yafolding-toggle-element)
+    map))
 
-;(provide '00_all)
-;;; ends here
+(use-package yafolding)
+(add-hook 'prog-mode-hook
+          (lambda () (yafolding-mode)))
+
+(provide '00_all)
+;;; 00_all ends here
