@@ -134,7 +134,7 @@
 
 
 ;; markdown-mode
-(use-package web-mode
+(use-package markdown-mode
   :mode (("\\.md$"     . markdown-mode))
   :config (
            )
