@@ -244,5 +244,8 @@
 (use-package editorconfig)
 (editorconfig-mode 1)
 
+; trampのwarning出さない
+(setq exec-path-from-shell-check-startup-files nil)
+
 ;(provide '00_all)
 ;;; ends here
