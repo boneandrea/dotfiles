@@ -10,3 +10,5 @@ https://qiita.com/yoooz/items/8a97642086611892f4c3
 全部勝手にgit clone && buildする
 
 (Github page: https://boneandrea.github.io/dotfiles/) 
+
+[hoge](newpage.md)
