@@ -1,6 +1,5 @@
 # -*- Mode: Shell-script -*-
 #
-# ~/.zshrc
 #
 PATH=/usr/local/bin:~/bin:$PATH
 PATH=~/work/arduino:$PATH
@@ -8,9 +7,6 @@ PATH=~/.anyenv/bin:$PATH
 PATH=~/.rbenv/bin:$PATH
 PATH=~/.cask/bin:$PATH
 PATH=~/.local/bin:$PATH
-
-# eclipse LUNA
-PATH=/opt/eclipse-luna:$PATH
 
 export PATH
 
@@ -46,3 +42,12 @@ export PATH="/usr/local/heroku/bin:$PATH"
 export JAVA_HOME=/usr/lib/jvm/java-8-oracle
 export PATH=$JAVA_HOME/bin:$PATH
 export LD_LIBRARY_PATH=/usr/arm-linux-gnueabihf/lib
+
+# # anyenv
+ENVS="anyenv pyenv rbenv nodenv"
+
+for e in `echo $ENVS`; do
+  if type -a $e > /dev/null 2>&1 ; then
+    eval "$($e init - --no-rehash)"
+  fi
+done

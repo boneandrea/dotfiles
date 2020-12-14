@@ -1,14 +1,9 @@
 # -*- Mode: Shell-script -*-
-#
-# ~/.zshrc
-#
 
 # zcompile automatically
 if [ ~/.zshrc -nt ~/.zshrc.zwc ]; then
     zcompile ~/.zshrc
 fi
-
-export PATH
 
 stty erase 
 stty kill 
@@ -54,13 +49,13 @@ unsetopt	AUTO_PUSHD \
 		      MENU_COMPLETE \
 		      NO_NOMATCH NO_RCS REC_EXACT CORRECT_ALL
 
+
 #
 # --- aliases ---
 #
 if [ -f ~/.aliases ]; then
 	  source ~/.aliases
 fi
-
 
 
 if [ -f ~/.dircolors ]; then
@@ -100,7 +95,7 @@ precmd () {
 
 # --- prompt ---
 if [ "x"$WINDOW = "x" ]; then
-	  PROMPT="%{%B[34m%}`whoami`@`hostname -s`:%c%b%{[m%}%% "
+	  PROMPT="%{%B[37m%}`whoami`@`hostname -s`:%c%b%{[m%}%% "
 else
 	  COLOR=3`expr $WINDOW % 7`
 	  PROMPT="%{%B[${COLOR}m%}`whoami`@`hostname -s`[$WINDOW]:%c%b%{[m%}%% "
@@ -130,15 +125,5 @@ urldecode () {
     echo $* | tr % = | nkf -wmQ
 }
 
-# anyenv
-ENVS="anyenv pyenv rbenv nodenv"
-
-for e in `echo $ENVS`; do
-  if type -a $e > /dev/null 2>&1 ; then
-    eval "$($e init - --no-rehash)"
-  fi
-done
-
 # for TRAMP using emacs
 [[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ '
-
