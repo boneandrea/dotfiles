@@ -11,7 +11,7 @@ https://qiita.com/yoooz/items/8a97642086611892f4c3
 
 (Github page: https://boneandrea.github.io/dotfiles/) 
 
-[hoge](https://boneandrea.github.io/dotfiles/newpage.md) 
+[.md](https://boneandrea.github.io/dotfiles/newpage.md) X
 
-[hoge](https://boneandrea.github.io/dotfiles/newpage) 
-[hoge](https://boneandrea.github.io/dotfiles/newpage.html) 
+[""](https://boneandrea.github.io/dotfiles/newpage) O  
+[.html](https://boneandrea.github.io/dotfiles/newpage.html) O
