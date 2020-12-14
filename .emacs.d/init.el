@@ -28,3 +28,4 @@
 (init-loader-load "~/.emacs.d/inits")
 
 ;;; init.el ends
+(put 'upcase-region 'disabled nil)

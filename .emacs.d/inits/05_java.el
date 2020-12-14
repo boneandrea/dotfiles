@@ -3,7 +3,8 @@
 ;;; Code:
 
 (use-package groovy-mode)
-;
+(use-package kotlin-mode)
+
 ; clang-format
 (global-set-key "\C-xcf" 'clang-format)
 
