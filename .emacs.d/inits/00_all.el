@@ -2,6 +2,10 @@
 ;;; Commentary:
 ;;; Code:
 
+;; 点滅不要
+;; https://ayatakesi.github.io/emacs/26.1/html/Cursor-Display.html
+(setq visible-cursor nil)
+
 ;; turn on font-lock mode
 (when (fboundp 'global-font-lock-mode)
   (global-font-lock-mode t))
