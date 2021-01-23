@@ -1,9 +1,14 @@
 # -*- Mode: Shell-script -*-
+#
+# ~/.zshrc
+#
 
 # zcompile automatically
 if [ ~/.zshrc -nt ~/.zshrc.zwc ]; then
     zcompile ~/.zshrc
 fi
+
+export PATH
 
 stty erase 
 stty kill 
@@ -57,9 +62,8 @@ if [ -f ~/.aliases ]; then
 	  source ~/.aliases
 fi
 
-
-if [ -f ~/.dircolors ]; then
-	  eval `dircolors -b ~/.dircolors`
+if [ -f ~/.dir_colors ]; then
+	  eval `dircolors -b ~/.dir_colors`
 fi
 
 # --- bindings ---
@@ -95,7 +99,7 @@ precmd () {
 
 # --- prompt ---
 if [ "x"$WINDOW = "x" ]; then
-	  PROMPT="%{%B[37m%}`whoami`@`hostname -s`:%c%b%{[m%}%% "
+	  PROMPT="%{%B[34m%}`whoami`@`hostname -s`:%c%b%{[m%}%% "
 else
 	  COLOR=3`expr $WINDOW % 7`
 	  PROMPT="%{%B[${COLOR}m%}`whoami`@`hostname -s`[$WINDOW]:%c%b%{[m%}%% "
@@ -104,13 +108,8 @@ fi
 #        RPROMPT=' %~ [%T]'
 RPROMPT=' %~ %1(v|%F{green}%1v%f|) [%T]'
 
-
 if [ -x `which dircolors` ]; then
     dircolors -p >| ~/.dir_colors
-fi
-
-if [ -f ~/.dir_colors ]; then
-    eval $(dircolors ~/.dir_colors)
 fi
 
 #cd ~
@@ -125,5 +124,29 @@ urldecode () {
     echo $* | tr % = | nkf -wmQ
 }
 
+# anyenv
+ENVS="anyenv pyenv rbenv nodenv"
+
+for e in `echo $ENVS`; do
+    if type -a $e > /dev/null 2>&1 ; then
+        eval "$($e init - --no-rehash zsh)"
+    fi
+done
+
 # for TRAMP using emacs
 [[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ '
+
+#. $HOME/.bash_wsl.sh
+
+
+if [ -f ~/.ssh-agent ]; then
+    source ~/.ssh-agent > /dev/null
+    if [ "$SSH_AGENT_PID" != "" ]; then
+        if [ `ps aux|grep $SSH_AGENT_PID| grep -c ssh-agent` = "0" ]; then
+            ssh-agent >| ~/.ssh-agent
+            source ~/.ssh-agent > /dev/null
+        fi
+    fi
+else
+    ssh-agent >| ~/.ssh-agent
+fi
