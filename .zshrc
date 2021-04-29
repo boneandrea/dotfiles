@@ -136,9 +136,6 @@ done
 # for TRAMP using emacs
 [[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ '
 
-#. $HOME/.bash_wsl.sh
-
-
 if [ -f ~/.ssh-agent ]; then
     source ~/.ssh-agent > /dev/null
     if [ "$SSH_AGENT_PID" != "" ]; then
