@@ -6,7 +6,7 @@
 ;; https://ayatakesi.github.io/emacs/26.1/html/Cursor-Display.html
 (setq visible-cursor nil)
 
-;; turn on font-lock mode
+;; enable font-lock mode
 (when (fboundp 'global-font-lock-mode)
   (global-font-lock-mode t))
 
@@ -19,6 +19,9 @@
 
 ;; mailer
 (use-package mew)
+
+;; モードラインがあふれる
+(use-package diminish)
 
 ;; enable visual feedback on selections
 ;(setq transient-mark-mode t)
@@ -70,15 +73,6 @@
 ;; magit
 (use-package magit)
 (setq magit-auto-revert-mode nil)
-;;(setq magit-last-seen-setup-instructions "1.4.0")
-
-;;(add-hook 'ruby-mode-hook 'gtags-mode)
-
-; qml-mode
-;; (add-to-list 'auto-mode-alist (cons  "\\.qml" 'qml-mode)
-;; (autoload 'qml-mode "qml-mode" t)
-;; (setq-default indent-tabs-mode t) ;; default = nil
-
 
 ;; do not use \t but \s
 (setq-default indent-tabs-mode nil)
@@ -261,6 +255,23 @@
 (use-package yafolding)
 (add-hook 'prog-mode-hook
           (lambda () (yafolding-mode)))
+
+(use-package yasnippet
+  :straight t
+  :diminish yas-minor-mode
+  :bind (
+         :map yas-minor-mode-map
+              ("C-c s i" . yas-insert-snippet)  ; 既存へ挿入
+              ("C-c s n" . yas-new-snippet)     ; 新規作成
+              ("C-c s v" . yas-visit-snippet-file)  ; 既存の閲覧編集
+              ("C-c s l" . yas-describe-tables) ; 選択可能なスニペットの一覧表示
+              ("C-c s g" . yas-reload-all))
+ :config
+ (yas-global-mode 1)
+ )
+
+(use-package yasnippet-snippets)
+
 
 (provide '00_all)
 ;;; 00_all ends here
