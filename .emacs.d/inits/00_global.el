@@ -15,6 +15,7 @@
 
 ;; import $ENV["PATH"]
 (use-package exec-path-from-shell)
+(setq exec-path-from-shell-check-startup-files nil)
 (exec-path-from-shell-initialize)
 
 ;; mailer
@@ -24,7 +25,7 @@
 (use-package diminish)
 
 ;; enable visual feedback on selections
-;(setq transient-mark-mode t)
+;;(setq transient-mark-mode t)
 
 ;; default to better frame titles
 (setq frame-title-format (concat  "%b - emacs@" system-name))
@@ -107,7 +108,7 @@
 ;; 拡張子の*.rst, *.restのファイルをrst-modeで開く
 (setq auto-mode-alist
       (append '(("\\.rst$" . rst-mode)
-        ("\\.rest$" . rst-mode)) auto-mode-alist))
+                ("\\.rest$" . rst-mode)) auto-mode-alist))
 ;; 背景が黒い場合はこうしないと見出しが見づらい
 (setq frame-background-mode 'dark)
 ;; 全部スペースでインデントしましょう
@@ -136,7 +137,7 @@
   :mode (("\\.md$"     . markdown-mode))
   :config (
            )
-)
+  )
 
 ;; auto reload updated buffers
 (defun revert-buffer-no-confirm ()
@@ -157,8 +158,8 @@
 
 ;; use tab instead of spaces when Makefile-mode
 (add-hook 'makefile-mode-hook
-  (function (lambda ()
-    (setq indent-tabs-mode t))))
+          (function (lambda ()
+                      (setq indent-tabs-mode t))))
 
 
 (eval-after-load "sql"
@@ -188,8 +189,8 @@
 ;; 行末スペース削除するが
 (defvar delete-trailing-whitespece-before-save t)
 (defun my-delete-trailing-whitespace ()
- (if delete-trailing-whitespece-before-save
-     (delete-trailing-whitespace)))
+  (if delete-trailing-whitespece-before-save
+      (delete-trailing-whitespace)))
 (add-hook 'before-save-hook 'my-delete-trailing-whitespace)
 
 ;; markdown modeではしたくないので
@@ -237,8 +238,6 @@
 
 ;; tramp
 (setq tramp-auto-save-directory "/tmp")
-;; trampのwarning出さない
-(setq exec-path-from-shell-check-startup-files nil)
 
 ;; editorconfig
 (use-package editorconfig)
@@ -259,16 +258,16 @@
 (use-package yasnippet
   :straight t
   :diminish yas-minor-mode
-  :bind (
-         :map yas-minor-mode-map
+  :bind (:map yas-minor-mode-map
               ("C-c s i" . yas-insert-snippet)  ; 既存へ挿入
               ("C-c s n" . yas-new-snippet)     ; 新規作成
               ("C-c s v" . yas-visit-snippet-file)  ; 既存の閲覧編集
               ("C-c s l" . yas-describe-tables) ; 選択可能なスニペットの一覧表示
               ("C-c s g" . yas-reload-all))
- :config
- (yas-global-mode 1)
- )
+  :config
+  (yas-global-mode 1)
+  (setq yas-prompt-functions '(yas-ido-prompt))
+  )
 
 (use-package yasnippet-snippets)
 
