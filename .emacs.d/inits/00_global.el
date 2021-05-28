@@ -271,6 +271,7 @@
 
 (use-package yasnippet-snippets)
 
+(setq ad-redefinition-action 'accept)
 
 (provide '00_all)
 ;;; 00_all ends here

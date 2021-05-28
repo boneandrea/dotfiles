@@ -24,5 +24,7 @@
              (define-key php-mode-map  (kbd "C-]") 'ac-php-find-symbol-at-point)   ;goto define
              (define-key php-mode-map  (kbd "C-t") 'ac-php-location-stack-back)    ;go back
              ))
-(use-package geben); phpのデバッガ
+;; phpのデバッガ
+(use-package geben)
+
 ;;; ends here
