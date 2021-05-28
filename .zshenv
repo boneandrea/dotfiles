@@ -1,12 +1,18 @@
 # -*- Mode: Shell-script -*-
 #
+# ~/.zshrc
+#
 #
 PATH=/usr/local/bin:~/bin:$PATH
-PATH=~/work/arduino:$PATH
+PATH=~/work/arduino/IDE/arduino:$PATH
 PATH=~/.anyenv/bin:$PATH
 PATH=~/.rbenv/bin:$PATH
 PATH=~/.cask/bin:$PATH
 PATH=~/.local/bin:$PATH
+PATH=/opt/android-studio/bin:$PATH
+
+# eclipse LUNA
+PATH=/opt/eclipse-luna:$PATH
 
 export PATH
 
@@ -25,8 +31,9 @@ export LESS='-Q -i -r -R'
 if [ -f /usr/share/source-highlight/src-hilite-lesspipe.sh ]; then
     export LESSOPEN='| /usr/share/source-highlight/src-hilite-lesspipe.sh %s'
 fi
+
 export JLESSCHARSET=japanese
-export PERL5LIB=~/perl5/lib/perl5
+export PERL5LIB=~/perl5
 
 export GTK_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
@@ -43,11 +50,6 @@ export JAVA_HOME=/usr/lib/jvm/java-8-oracle
 export PATH=$JAVA_HOME/bin:$PATH
 export LD_LIBRARY_PATH=/usr/arm-linux-gnueabihf/lib
 
-# # anyenv
-ENVS="anyenv pyenv rbenv nodenv"
+# bcで小数
+# export BC_ENV_ARGS=-l
 
-for e in `echo $ENVS`; do
-  if type -a $e > /dev/null 2>&1 ; then
-    eval "$($e init - --no-rehash)"
-  fi
-done

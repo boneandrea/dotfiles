@@ -8,8 +8,6 @@ if [ ~/.zshrc -nt ~/.zshrc.zwc ]; then
     zcompile ~/.zshrc
 fi
 
-export PATH
-
 stty erase 
 stty kill 
 stty susp 
@@ -62,8 +60,10 @@ if [ -f ~/.aliases ]; then
 	  source ~/.aliases
 fi
 
-if [ -f ~/.dir_colors ]; then
-	  eval `dircolors -b ~/.dir_colors`
+
+
+if [ -f ~/.dircolors ]; then
+	  eval `dircolors -b ~/.dircolors`
 fi
 
 # --- bindings ---
@@ -108,8 +108,13 @@ fi
 #        RPROMPT=' %~ [%T]'
 RPROMPT=' %~ %1(v|%F{green}%1v%f|) [%T]'
 
+
 if [ -x `which dircolors` ]; then
     dircolors -p >| ~/.dir_colors
+fi
+
+if [ -f ~/.dir_colors ]; then
+    eval $(dircolors ~/.dir_colors)
 fi
 
 #cd ~
@@ -125,13 +130,17 @@ urldecode () {
 }
 
 # anyenv
-ENVS="anyenv pyenv rbenv nodenv"
+eval "$(anyenv init -)"
+eval "$(phpenv init -)"
+eval "$(nodenv init -)"
 
-for e in `echo $ENVS`; do
-    if type -a $e > /dev/null 2>&1 ; then
-        eval "$($e init - --no-rehash zsh)"
-    fi
-done
+# pyenvをanyenv管理から外した
+PYENV_ROOT="${HOME}/.pyenv"
+PATH="${PYENV_ROOT}/bin:${PATH}"
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init --path)"
+fi
+eval "$(pyenv virtualenv-init -)"
 
 # for TRAMP using emacs
 [[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ '
@@ -139,10 +148,10 @@ done
 if [ -f ~/.ssh-agent ]; then
     source ~/.ssh-agent > /dev/null
     if [ "$SSH_AGENT_PID" != "" ]; then
-        if [ `ps aux|grep $SSH_AGENT_PID| grep -c ssh-agent` = "0" ]; then
-            ssh-agent >| ~/.ssh-agent
-            source ~/.ssh-agent > /dev/null
-        fi
+      if [ `ps aux|grep $SSH_AGENT_PID| grep -c ssh-agent` = "0" ]; then
+        ssh-agent >| ~/.ssh-agent
+        source ~/.ssh-agent > /dev/null
+      fi
     fi
 else
     ssh-agent >| ~/.ssh-agent
