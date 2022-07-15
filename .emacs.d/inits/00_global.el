@@ -154,7 +154,7 @@
 
 
 ;; arduino
-(use-package arduino-mode)
+;(use-package arduino-mode)
 
 ;; use tab instead of spaces when Makefile-mode
 (add-hook 'makefile-mode-hook
