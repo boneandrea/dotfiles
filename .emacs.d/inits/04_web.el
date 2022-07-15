@@ -50,3 +50,12 @@
 ;(setq web-mode-disable-auto-pairing nil)
 
 (use-package twig-mode)
+
+(use-package graphql-mode)
+(add-to-list 'auto-mode-alist '("\\.ql$"       . graphql-mode))
+
+;; vue-mode でjsのインデントが効かなくなる件対応 (https://qiita.com/akicho8/items/58c2ac5d762a2a4479c6)
+(setq mmm-js-mode-enter-hook (lambda () (setq syntax-ppss-table nil)))
+(setq mmm-typescript-mode-enter-hook (lambda () (setq syntax-ppss-table nil)))
+
+;;; 04_web.el ends here

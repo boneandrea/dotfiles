@@ -193,7 +193,7 @@
       (delete-trailing-whitespace)))
 (add-hook 'before-save-hook 'my-delete-trailing-whitespace)
 
-;; markdown modeではしたくないので
+;; markdown modeではdeleteしたくないので
 ;; 無効にしたいモードのhook
 (add-hook 'markdown-mode-hook
           '(lambda ()
