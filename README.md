@@ -12,4 +12,4 @@ Caskからstraight.elに乗り換えた
 
 - [raw markdown](https://boneandrea.github.io/dotfiles/newpage.md)  
 - [rendered markdown](https://boneandrea.github.io/dotfiles/newpage)  
-- [rendered markdown](https://boneandrea.github.io/dotfiles/newpage.html)
+- [rendered markdown.html](https://boneandrea.github.io/dotfiles/newpage.html)
