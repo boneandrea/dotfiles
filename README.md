@@ -14,6 +14,6 @@ Caskからstraight.elに乗り換えた
 - [rendered markdown](https://boneandrea.github.io/dotfiles/newpage)  
 - [rendered markdown.html](https://boneandrea.github.io/dotfiles/newpage.html)
 
-# ページのカスタム
+## ページのカスタム
 
 このテーマはCaymanなので、[https://github.com/pages-themes/cayman](https://github.com/pages-themes/cayman)から`_layouts`などを持ってきて配置、カスタムする
