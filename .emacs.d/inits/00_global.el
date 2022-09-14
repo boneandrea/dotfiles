@@ -273,5 +273,9 @@
 
 (setq ad-redefinition-action 'accept)
 
+;; https://qiita.com/lanevok/items/88f726213b494d1fb811
+;; EmacsでBackspace入力しているがDelete挙動になる場合の解決方法
+(normal-erase-is-backspace-mode 0)
+
 (provide '00_all)
 ;;; 00_all ends here
