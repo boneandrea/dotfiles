@@ -1,6 +1,5 @@
 # 何より重要なEmacsの設定
-Emacsないと何もできないマン,Caskからstraight.elに乗り換えた
-
+Emacsないと何もできないマン,Caskからstraight.elに乗り換えた  
 [Python2と縁を切れた](https://qiita.com/yoooz/items/8a97642086611892f4c3)
 
 ## 初期設定
