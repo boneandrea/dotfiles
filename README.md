@@ -8,8 +8,12 @@ Caskからstraight.elに乗り換えた
 不要！
 全部勝手にgit clone && buildする
 
-(Github page: https://boneandrea.github.io/dotfiles/) 
+(Github page: [https://boneandrea.github.io/dotfiles/](https://boneandrea.github.io/dotfiles/))
 
 - [raw markdown](https://boneandrea.github.io/dotfiles/newpage.md)  
 - [rendered markdown](https://boneandrea.github.io/dotfiles/newpage)  
 - [rendered markdown.html](https://boneandrea.github.io/dotfiles/newpage.html)
+
+# ページのカスタム
+
+このテーマはCaymanなので、[https://github.com/pages-themes/cayman](https://github.com/pages-themes/cayman)から`_layouts`などを持ってきて配置、カスタムする
