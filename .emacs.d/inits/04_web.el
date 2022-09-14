@@ -58,4 +58,5 @@
 (setq mmm-js-mode-enter-hook (lambda () (setq syntax-ppss-table nil)))
 (setq mmm-typescript-mode-enter-hook (lambda () (setq syntax-ppss-table nil)))
 
+(use-package slim-mode)
 ;;; 04_web.el ends here
