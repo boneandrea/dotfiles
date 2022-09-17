@@ -40,8 +40,11 @@
 
 (use-package vue-mode)
 (use-package add-node-modules-path)
+(use-package typescript-mode)
 
 (add-to-list 'auto-mode-alist '("\\.vue\\'" . vue-mode))
+(add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode))
+(add-to-list 'auto-mode-alist '("\\.tsx\\'" . typescript-mode))
 
 (add-hook 'vue-mode-hook 'flycheck-mode)
 (eval-after-load 'vue-mode

@@ -26,7 +26,7 @@
 (setq ruby-insert-encoding-magic-comment nil)
 
 
-(require "rspec-mode")
+(use-package rspec-mode)
 (autoload 'rspec-mode "rspec-mode")
 (add-hook 'ruby-mode-hook 'rspec-mode)
 
