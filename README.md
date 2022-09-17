@@ -6,7 +6,7 @@ Emacsないと何もできないマン,Caskからstraight.elに乗り換えた
 不要！
 全部勝手にgit clone && buildする
 
-(Github: [https://github.com/boneandrea/dotfiles](https://github.com/boneandrea/dotfiles/))
+(Github: [https://github.com/boneandrea/dotfiles](https://github.com/boneandrea/dotfiles/))  
 (Github page: [https://boneandrea.github.io/dotfiles/](https://boneandrea.github.io/dotfiles/))
 
 - [raw markdown](https://boneandrea.github.io/dotfiles/newpage.md)  
