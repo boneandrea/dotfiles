@@ -6,8 +6,26 @@ Emacsないと何もできないマン,Caskからstraight.elに乗り換えた
 不要！
 全部勝手にgit clone && buildする
 
-(Github: [https://github.com/boneandrea/dotfiles](https://github.com/boneandrea/dotfiles/))  
-(Github page: [https://boneandrea.github.io/dotfiles/](https://boneandrea.github.io/dotfiles/))
+でもないか
+### Emacs:
+```
+./setup_emacs.sh
+```
+
+### Vim:
+To install,
+```
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+```
+
+To install plugins, type on command mode:
+```
+:PluginInstall
+```
+or type in shell:
+```
+vim +PluginInstall +qall
+```
 
 - [raw markdown](https://boneandrea.github.io/dotfiles/newpage.md)  
 - [rendered markdown](https://boneandrea.github.io/dotfiles/newpage)  
@@ -16,3 +34,6 @@ Emacsないと何もできないマン,Caskからstraight.elに乗り換えた
 ## ページのカスタム
 
 このテーマはCaymanなので、[https://github.com/pages-themes/cayman](https://github.com/pages-themes/cayman)から`_layouts`などを持ってきて配置、カスタムする
+
+(Github: [https://github.com/boneandrea/dotfiles](https://github.com/boneandrea/dotfiles/))  
+(Github page: [https://boneandrea.github.io/dotfiles/](https://boneandrea.github.io/dotfiles/))
