@@ -18,7 +18,7 @@ To install,
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 ```
 
-To install plugins, type on command mode:
+To install plugins, type in command mode:
 ```
 :PluginInstall
 ```
