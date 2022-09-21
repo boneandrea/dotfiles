@@ -5,9 +5,6 @@
 #
 PATH=/usr/local/bin:~/bin:$PATH
 PATH=~/work/arduino/IDE/arduino:$PATH
-PATH=~/.anyenv/bin:$PATH
-PATH=~/.rbenv/bin:$PATH
-PATH=~/.cask/bin:$PATH
 PATH=~/.local/bin:$PATH
 PATH=/opt/android-studio/bin:$PATH
 
@@ -28,10 +25,6 @@ export EDITOR=vi
 export PAGER=less
 export LESS='-Q -i -r -R'
 
-if [ -f /usr/share/source-highlight/src-hilite-lesspipe.sh ]; then
-    export LESSOPEN='| /usr/share/source-highlight/src-hilite-lesspipe.sh %s'
-fi
-
 export JLESSCHARSET=japanese
 export PERL5LIB=~/perl5
 
@@ -51,5 +44,5 @@ export PATH=$JAVA_HOME/bin:$PATH
 export LD_LIBRARY_PATH=/usr/arm-linux-gnueabihf/lib
 
 # bcで小数
-# export BC_ENV_ARGS=-l
+export BC_ENV_ARGS=-l
 
