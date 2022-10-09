@@ -60,6 +60,10 @@ if [ -f ~/.aliases ]; then
 	  source ~/.aliases
 fi
 
+if [ -f ~/.aliases.local ]; then
+	  source ~/.aliases.local
+fi
+
 
 
 if [ -f ~/.dircolors ]; then
@@ -99,7 +103,7 @@ precmd () {
 
 # --- prompt ---
 if [ "x"$WINDOW = "x" ]; then
-	  PROMPT="%{%B[34m%}`whoami`@`hostname -s`:%c%b%{[m%}%% "
+	  PROMPT="%{%B[34m%}`whoami`@[080-9825-1600]`hostname -s`:%c%b%{[m%}%% "
 else
 	  COLOR=3`expr $WINDOW % 7`
 	  PROMPT="%{%B[${COLOR}m%}`whoami`@`hostname -s`[$WINDOW]:%c%b%{[m%}%% "
@@ -130,29 +134,35 @@ urldecode () {
 }
 
 # anyenv
+export PATH="$HOME/.anyenv/bin:$PATH"
 eval "$(anyenv init -)"
-eval "$(phpenv init -)"
-eval "$(nodenv init -)"
+echo INIT ANYENV
+eval "$(rbenv init - --path)"
 
 # pyenvをanyenv管理から外した
-PYENV_ROOT="${HOME}/.pyenv"
-PATH="${PYENV_ROOT}/bin:${PATH}"
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init --path)"
-fi
-eval "$(pyenv virtualenv-init -)"
+#PYENV_ROOT="${HOME}/.pyenv"
+#PATH="${PYENV_ROOT}/bin:${PATH}"
+#if command -v pyenv 1>/dev/null 2>&1; then
+#  eval "$(pyenv init --path)"
+#  eval "$(pyenv virtualenv-init -)"
+#fi
 
 # for TRAMP using emacs
 [[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ '
 
+#
 if [ -f ~/.ssh-agent ]; then
-    source ~/.ssh-agent > /dev/null
-    if [ "$SSH_AGENT_PID" != "" ]; then
-      if [ `ps aux|grep $SSH_AGENT_PID| grep -c ssh-agent` = "0" ]; then
-        ssh-agent >| ~/.ssh-agent
-        source ~/.ssh-agent > /dev/null
-      fi
-    fi
+     source ~/.ssh-agent > /dev/null
+     if [ "$SSH_AGENT_PID" != "" ]; then
+       if [ `ps aux|grep $SSH_AGENT_PID| grep -c ssh-agent` = "0" ]; then
+         ssh-agent >| ~/.ssh-agent
+         source ~/.ssh-agent > /dev/null
+       fi
+     fi
 else
     ssh-agent >| ~/.ssh-agent
 fi
+
+
+export DENO_INSTALL="~/.deno"
+export PATH=$DENO_INSTALL/bin:$PATH
