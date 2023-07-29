@@ -139,14 +139,6 @@ eval "$(anyenv init -)"
 echo INIT ANYENV
 eval "$(rbenv init - --path)"
 
-# pyenvをanyenv管理から外した
-#PYENV_ROOT="${HOME}/.pyenv"
-#PATH="${PYENV_ROOT}/bin:${PATH}"
-#if command -v pyenv 1>/dev/null 2>&1; then
-#  eval "$(pyenv init --path)"
-#  eval "$(pyenv virtualenv-init -)"
-#fi
-
 # for TRAMP using emacs
 [[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ '
 
