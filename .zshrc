@@ -150,19 +150,4 @@ eval "$(rbenv init - --path)"
 # for TRAMP using emacs
 [[ $TERM == "dumb" ]] && unsetopt zle && PS1='$ '
 
-#
-if [ -f ~/.ssh-agent ]; then
-     source ~/.ssh-agent > /dev/null
-     if [ "$SSH_AGENT_PID" != "" ]; then
-       if [ `ps aux|grep $SSH_AGENT_PID| grep -c ssh-agent` = "0" ]; then
-         ssh-agent >| ~/.ssh-agent
-         source ~/.ssh-agent > /dev/null
-       fi
-     fi
-else
-    ssh-agent >| ~/.ssh-agent
-fi
-
-
-export DENO_INSTALL="~/.deno"
-export PATH=$DENO_INSTALL/bin:$PATH
+eval `ssh-agent` > /dev/null 2>&1
