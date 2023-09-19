@@ -25,6 +25,10 @@
 (custom-set-variables
  '(init-loader-show-log-after-init 'error-only))
 
+
+; Emacs27で出てくる”Package cl is deprecated”を抑制する
+(setq byte-compile-warnings '(cl-functions))
+
 (init-loader-load "~/.emacs.d/inits")
 
 ;;; init.el ends
