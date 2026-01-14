@@ -2,11 +2,16 @@
 ;;; Commentary:
 ;;; Code:
 
+;; use-packageがインストールされていなかったらuse-packageをインストール
+(dolist (package '(use-package))
+  (unless (package-installed-p package)
+    (package-install package)))
+
 ;;; straight
 (defvar bootstrap-version)
 (let ((bootstrap-file
        (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
-      (bootstrap-version 5))
+      (bootstrap-version 7))
   (unless (file-exists-p bootstrap-file)
     (with-current-buffer
         (url-retrieve-synchronously

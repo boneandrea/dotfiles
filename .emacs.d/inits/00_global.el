@@ -5,6 +5,7 @@
 ;; 点滅不要
 ;; https://ayatakesi.github.io/emacs/26.1/html/Cursor-Display.html
 (setq visible-cursor nil)
+(menu-bar-mode -1)
 
 ;; enable font-lock mode
 (when (fboundp 'global-font-lock-mode)
@@ -71,10 +72,6 @@
 ;; no need backup file
 (setq make-backup-files nil)
 
-;; magit
-(use-package magit)
-(setq magit-auto-revert-mode nil)
-
 ;; do not use \t but \s
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 2)
@@ -95,9 +92,9 @@
 (add-hook 'after-init-hook 'global-flycheck-mode)
 
 ;; blockdiag-mode
-(use-package blockdiag-mode)
-(setq auto-mode-alist
-      (append '(("\\.diag$" . blockdiag-mode)) auto-mode-alist))
+;(use-package blockdiag-mode)
+;(setq auto-mode-alist
+;      (append '(("\\.diag$" . blockdiag-mode)) auto-mode-alist))
 
 
 
@@ -165,7 +162,6 @@
 (eval-after-load "sql"
   '(load-library "sql-indent"))
 
-
 ;; global-key
 
 (global-set-key "\C-h" 'delete-backward-char)
@@ -179,6 +175,7 @@
 
 (define-key ctl-x-map ":" 'comment-region)
 (define-key ctl-x-map ")" 'revert-buffer)
+
 
 ;; https://qiita.com/yynozk/items/f5ccc2b027a9aaa13fe4
 (cond (window-system
@@ -229,12 +226,10 @@
 
 
 ;; docker
-(use-package docker)
 (use-package dockerfile-mode)
 (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode))
 (use-package docker-compose-mode)
-(use-package docker-tramp)
-(set-variable 'docker-tramp-use-names t)
+;;(set-variable 'docker-tramp-use-names t)
 
 ;; tramp
 (setq tramp-auto-save-directory "/tmp")
@@ -277,5 +272,38 @@
 ;; EmacsでBackspace入力しているがDelete挙動になる場合の解決方法
 (normal-erase-is-backspace-mode 0)
 
-(provide '00_all)
-;;; 00_all ends here
+;; set modeline color
+(set-face-attribute 'mode-line nil :background "darkblue" :foreground "white")
+
+
+;; magit
+(setq magit-auto-revert-mode nil)
+;;;; 今居るhunkの行内の差分に色付けする
+;(setq magit-diff-refine-hunk t)
+;;;; 空白の差を無視しない
+;(setq smerge-refine-ignore-whitespace nil)
+
+(with-eval-after-load 'magit
+  ;; 一旦、Magitの標準的な「薄い色」の継承を完全にカットします
+  (let ((spec '((t :inherit nil :extend t))))
+    ;; (set-face-attribute 'magit-diff-added             nil :inherit nil :background "#008700" :extend t))
+    ;; (set-face-attribute 'magit-diff-added-highlight   nil :inherit nil :background "#008700" :extend t))
+    ;; (set-face-attribute 'magit-diff-removed           nil :inherit nil :background "#ff0000" :extend t))
+    ;; (set-face-attribute 'magit-diff-removed-highlight nil :inherit nil :background "#ff0000" :extend t))
+
+  ;; 「単語単位」の強調（refine）が白くなるのを防ぐ
+  ;; 背景色と同じにして事実上無効化するか、太字にするのがターミナルでは見やすいです
+  (let ((refine-faces '(magit-diff-added-refine magit-diff-removed-refine)))
+    (dolist (face refine-faces)
+      (when (facep face)
+        (set-face-attribute face nil :inherit nil :weight 'bold :background "unspecified"))))))
+
+(setq package-install-upgrade-built-in t)
+(use-package transient
+  :straight t)
+
+(use-package magit
+  :straight t
+  :after transient) ; transientの後に読み込むよう明示
+
+(provide '00_all);;; 00_all ends here
