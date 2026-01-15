@@ -283,27 +283,56 @@
 ;;;; 空白の差を無視しない
 ;(setq smerge-refine-ignore-whitespace nil)
 
-(with-eval-after-load 'magit
+(use-package magit
+  :config
   ;; 一旦、Magitの標準的な「薄い色」の継承を完全にカットします
   (let ((spec '((t :inherit nil :extend t))))
-    ;; (set-face-attribute 'magit-diff-added             nil :inherit nil :background "#008700" :extend t))
-    ;; (set-face-attribute 'magit-diff-added-highlight   nil :inherit nil :background "#008700" :extend t))
-    ;; (set-face-attribute 'magit-diff-removed           nil :inherit nil :background "#ff0000" :extend t))
-    ;; (set-face-attribute 'magit-diff-removed-highlight nil :inherit nil :background "#ff0000" :extend t))
+    (set-face-attribute 'magit-diff-added             nil :inherit nil :background "#008700" :extend t)
+    (set-face-attribute 'magit-diff-added-highlight   nil :inherit nil :background "#008700" :extend t)
+    (set-face-attribute 'magit-diff-removed           nil :inherit nil :background "#ff0000" :extend t)
+    (set-face-attribute 'magit-diff-removed-highlight nil :inherit nil :background "#ff0000" :extend t)
+    )
 
   ;; 「単語単位」の強調（refine）が白くなるのを防ぐ
   ;; 背景色と同じにして事実上無効化するか、太字にするのがターミナルでは見やすいです
   (let ((refine-faces '(magit-diff-added-refine magit-diff-removed-refine)))
     (dolist (face refine-faces)
       (when (facep face)
-        (set-face-attribute face nil :inherit nil :weight 'bold :background "unspecified"))))))
+        (set-face-attribute face nil :inherit nil :weight 'bold :background "unspecified"))))
+  )
 
 (setq package-install-upgrade-built-in t)
-(use-package transient
-  :straight t)
+;;(use-package transient  :straight t)
 
+;;(straight-use-package 'magit)
 (use-package magit
   :straight t
-  :after transient) ; transientの後に読み込むよう明示
+  :config
+  ;; 1. 既存の「薄い色」の継承を完全にカット (:inherit nil)
+  ;; 2. 背景を行の端まで塗る (:extend t)
+  ;; 3. ターミナルが解釈しやすい標準色 ("green", "red") を指定
+
+  ;; 追加行（非選択時は文字だけ緑、選択時は背景緑）
+  (set-face-attribute 'magit-diff-added nil
+                      :foreground "green" :background "unspecified" :inherit nil)
+  (set-face-attribute 'magit-diff-added-highlight nil
+                      :foreground "white" :background "green" :inherit nil :extend t)
+
+  ;; 削除行（非選択時は文字だけ赤、選択時は背景赤）
+  (set-face-attribute 'magit-diff-removed nil
+                      :foreground "red" :background "unspecified" :inherit nil)
+  (set-face-attribute 'magit-diff-removed-highlight nil
+                      :foreground "white" :background "red" :inherit nil :extend t)
+
+  ;; 単語単位の強調 (refine) が白っぽくなるのを防ぐ
+  (with-eval-after-load 'magit-diff
+    (when (facep 'magit-diff-added-refine)
+      (set-face-attribute 'magit-diff-added-refine nil
+                          :background "#004400" :foreground "white" :inherit nil))
+    (when (facep 'magit-diff-removed-refine)
+      (set-face-attribute 'magit-diff-removed-refine nil
+                          :background "#440000" :foreground "white" :inherit nil))))
+
+
 
 (provide '00_all);;; 00_all ends here

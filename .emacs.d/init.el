@@ -2,6 +2,9 @@
 ;;; Commentary:
 ;;; Code:
 
+(setq package-enable-at-startup nil)
+(setq straight-check-for-modifications '(find-when-checking))
+
 ;; use-packageがインストールされていなかったらuse-packageをインストール
 (dolist (package '(use-package))
   (unless (package-installed-p package)
